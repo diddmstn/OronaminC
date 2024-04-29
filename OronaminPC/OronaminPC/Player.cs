@@ -18,8 +18,10 @@
             health = _health;
             gold = _gold;   
         }
-        void Status()
+        public void Status()
         {
+            Console.WriteLine($"상태 보기");
+            Console.WriteLine($"캐릭터의 정보가 표시됩니다.\n");
             Console.WriteLine($"Lv. {level.ToString("00")}");
             Console.WriteLine($"{name} (전사)");
             Console.WriteLine($"공격력 : {attack}");
@@ -28,7 +30,7 @@
             Console.WriteLine($"Gold   : {gold}\n");
             Console.WriteLine($"0. 나가기");
         }
-        int Attack(int monsterHealth)//몬스터 체력
+        public int Attack()
         {
             double errorValue = Math.Ceiling((double)(attack/10)); //공격력 오차값, 오차가 소수점이라면 무조건 올림 처리
             Random random = new Random();
