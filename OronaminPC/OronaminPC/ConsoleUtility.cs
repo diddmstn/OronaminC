@@ -9,14 +9,10 @@ public class ConsoleUtility
 		bool isValidInput = int.TryParse(userInput, out number);
 		if (!isValidInput)
 		{
-			Console.WriteLine("잘못된 입력입니다.");
-			Thread.Sleep(1000);
 			return -1;
 		}
 		else if (number < 0 || number > max)
 		{
-            Console.WriteLine("잘못된 입력입니다.");
-            Thread.Sleep(1000);
             return -1;
         }
 		else
@@ -41,10 +37,6 @@ public class ConsoleUtility
         Console.Write(">> ");
 		string userInput = Console.ReadLine();
 		int number = InputCheck(userInput, 3);
-		if (number == -1)
-		{
-			Menu();
-		}
 		return number;
     }
 
