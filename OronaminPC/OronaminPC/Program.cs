@@ -5,6 +5,8 @@
         static void Main(string[] args)
         {
             ConsoleUtility cu = new ConsoleUtility();
+            string[] str = cu.Title();
+            Player player = new Player(str[0], str[1]);
             while(true)
             {
                 int menu = cu.Menu();
@@ -16,8 +18,7 @@
                         Thread.Sleep(1000);
                         return;
                     case 1:
-                        Console.WriteLine("라면 나왔습니다~");
-                        Thread.Sleep(1000);
+                        player.Status();
                         break;
                     case 2:
                         Console.WriteLine("아이스커피 나왔습니다~");

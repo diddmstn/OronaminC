@@ -1,9 +1,10 @@
-﻿using System;
+﻿using OronaminPC;
+using System;
 using System.Security.Cryptography.X509Certificates;
 
 public class ConsoleUtility
 {
-	public int InputCheck(string userInput, int max)
+	public static int InputCheck(string userInput, int max)
 	{
 		int number;
 		bool isValidInput = int.TryParse(userInput, out number);
@@ -24,29 +25,76 @@ public class ConsoleUtility
 	public int Menu()
 	{
 		Console.Clear();
-		Console.WriteLine("<<5로나민 PC방>>");
-		Console.WriteLine("Menu");
-		Console.WriteLine();
-		Console.WriteLine("1. 보글보글 끓인 국물라면(스테이터스)");
-		Console.WriteLine("2. 아이 찹다 아이스커피(던전 입장)");
-		Console.WriteLine("3. 더워서 그런데 에어컨 좀...(인벤토리)");
-		Console.WriteLine();
-		Console.WriteLine("0. 옆에 잼민이 더럽게 시끄럽네(나가기)");
-		Console.WriteLine();
-		Console.WriteLine("원하시는 메뉴 번호를 알바생에게 말해주세요.");
-        Console.Write(">> ");
-		string userInput = Console.ReadLine();
+        // 메인 메뉴
+        Console.WriteLine("▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("　　　　　　　　　　<<5로나민 PC방>>　　　　　　　　　　");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("　　　　　　　　　　　[ 메  뉴 ]　　　　　　　　　　　　");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("　1. 아이 찹다 아이스 커피 (상태 보기)　　　　　　　　　");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("　2. 아따 매버라 라볶이　(던전 입장)　　　　　　　　　　");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("　3. 저기요 여 에어컨 좀 틀아주소 (인벤토리)　　　　　　");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("　0. 워메 잼민이들때매 허파 뒤집히겄네  (나가기)　　　　");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("　무엇을 도와드릴까요 손님? ＼( ⌒  ∨ ⌒)／ 　　　　　　　");
+        Console.WriteLine("　>>");
+        Console.WriteLine("");
+        Console.WriteLine("▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤");
+        string userInput = Console.ReadLine();
 		int number = InputCheck(userInput, 3);
 		return number;
     }
 
-	public void Title()
+	public string[] Title()
 	{
-		Console.WriteLine("5로나민 PC방에 오신 것을 환영합니다.");
-		Console.WriteLine("원하시는 닉네임을 입력해주세요.");
-		Console.Write(">> ");
-		string name = Console.ReadLine();
-		// 플레이어 클래스 생성자 입력
+		// 타이틀
+		string[] strings = new string[2];
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□□□●●●●□□□□●●●●●●□□●●□□□□●●□□●●●●●●□●●□");
+        Console.WriteLine("□□●●□□●●□□□□□□□□●□□●●□□□□●●□□●●□□●●□●●□");
+        Console.WriteLine("□□●●□□●●□□□●●●●●●□□●●□□□□●●□□●●□□●●□●●□");
+        Console.WriteLine("□□□●●●●□□□□●□□□□□□□●●●●●□●●●□●●●●●●□●●□");
+        Console.WriteLine("□□□□□□□□□□□●●●●●●□□●●●●●□●●●□□□□□□□□●●□");
+        Console.WriteLine("□□□□●●□□□□□□□●●□□□□□□□□□□●●□□●●□□□□□□□□");
+        Console.WriteLine("□●●●●●●●●□●●●●●●●●□□□□□□□●●□□●●●●●●●●□□");
+        Console.WriteLine("□●●●●●●●●□●●●●●●●●□□□□□□□●●□□●●●●●●●●□□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□□□□□□□●●●●●□□□□□●●●●□□□□●●□●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□□●●●●●●□□□●●●●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□●●□□□□●●□□●●□●●□●●●□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□●●□□□□□□□□●●●●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●●●●●□□●●□□□□□□□□□□□□□□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□●●□□□□●●□□□□●●●●□□□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□□●●●●●●□□□□●●□□●●□□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□□□●●●●□□□□□□●●●●□□□□□□□□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□");
+        Console.Write("□　　　　　　　　　　");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.Write("오로나민 PC방");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("은 회원제로 운영됩니다.　　　　　　　　　□");
+        Console.Write("□　　　　　　　　　　　　회원님의 ");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.Write("성함");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("을 입력해주세요　　　　　　　　　　　□");
+        Console.WriteLine("□　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        string name = Console.ReadLine();
+		strings[0] = name;
+		strings[1] = "전사"; // 직업 선택하기
+		return strings;
 
 	}
 	public ConsoleUtility()
