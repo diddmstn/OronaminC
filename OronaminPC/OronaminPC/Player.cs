@@ -18,8 +18,16 @@
             health = _health;
             gold = _gold;   
         }
-
+        void Status()
+        {
+            Console.WriteLine($"Lv. {level.ToString("00")}");
+            Console.WriteLine($"{name} (전사)");
+            Console.WriteLine($"공격력 : {attack}");
+            Console.WriteLine($"방어력 : {defense}");
+            Console.WriteLine($"체  력 : {health}");
+            Console.WriteLine($"Gold   : {gold}\n");
+            Console.WriteLine($"0. 나가기");
+        }
        
-      
     }
 }
