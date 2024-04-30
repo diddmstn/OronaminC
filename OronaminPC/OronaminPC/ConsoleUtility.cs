@@ -57,47 +57,48 @@ public class ConsoleUtility
 
 	public string[] Title()
 	{
-		// 타이틀
-		string[] strings = new string[2];
-        Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
-        Console.WriteLine("　　　ⓞⓞⓞⓞ　　　　ⓞⓞⓞⓞⓞⓞ　　ⓞⓞ　　　　ⓞⓞ　　ⓞⓞⓞⓞⓞⓞ　ⓞⓞ　");
-        Console.WriteLine("　　ⓞⓞ　　ⓞⓞ　　　　　　　　ⓞ　　ⓞⓞ　　　　ⓞⓞ　　ⓞⓞ　　ⓞⓞ　ⓞⓞ　");
-        Console.WriteLine("　　ⓞⓞ　　ⓞⓞ　　　ⓞⓞⓞⓞⓞⓞ　　ⓞⓞ　　　　ⓞⓞ　　ⓞⓞ　　ⓞⓞ　ⓞⓞ　");
-        Console.WriteLine("　　　ⓞⓞⓞⓞ　　　　ⓞ　　　　　　　ⓞⓞⓞⓞⓞ　ⓞⓞⓞ　ⓞⓞⓞⓞⓞⓞ　ⓞⓞ　");
-        Console.WriteLine("　　　　　　　　　　　ⓞⓞⓞⓞⓞⓞ　　ⓞⓞⓞⓞⓞ　ⓞⓞⓞ　　　　　　　　ⓞⓞ　");
-        Console.WriteLine("　　　　ⓞⓞ　　　　　　　ⓞⓞ　　　　　　　　　　ⓞⓞ　　ⓞⓞ　　　　　　　　");
-        Console.WriteLine("　ⓞⓞⓞⓞⓞⓞⓞⓞ　ⓞⓞⓞⓞⓞⓞⓞⓞ　　　　　　　ⓞⓞ　　ⓞⓞⓞⓞⓞⓞⓞⓞ　　");
-        Console.WriteLine("　ⓞⓞⓞⓞⓞⓞⓞⓞ　ⓞⓞⓞⓞⓞⓞⓞⓞ　　　　　　　ⓞⓞ　　ⓞⓞⓞⓞⓞⓞⓞⓞ　　");
-        Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞⓞⓞⓞ　　　　　ⓞⓞⓞⓞ　　　　ⓞⓞ　ⓞⓞ　ⓞⓞ　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　ⓞⓞ　　　ⓞⓞⓞⓞⓞⓞ　　　ⓞⓞⓞⓞⓞ　ⓞⓞ　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　ⓞⓞ　　ⓞⓞ　　　　ⓞⓞ　　ⓞⓞ　ⓞⓞ　ⓞⓞⓞ　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　ⓞⓞ　　ⓞⓞ　　　　　　　　ⓞⓞⓞⓞⓞ　ⓞⓞ　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞⓞⓞⓞⓞ　　ⓞⓞ　　　　　　　　　　　　　　ⓞⓞ　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　　　　　ⓞⓞ　　　　ⓞⓞ　　　　ⓞⓞⓞⓞ　　　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　　　　　　ⓞⓞⓞⓞⓞⓞ　　　　ⓞⓞ　　ⓞⓞ　　　　　　　");
-        Console.WriteLine("　　　　　　　ⓞⓞ　　　　　　　　ⓞⓞⓞⓞ　　　　　　ⓞⓞⓞⓞ　　　　　　　　");
-        Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
-        Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
-        Console.Write("　　　　　　　　　　　");
+        string[] strings = new string[2];
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□□□●●●●□□□□●●●●●●□□●●□□□□●●□□●●●●●●□●●□");
+        Console.WriteLine("□□●●□□●●□□□□□□□□●□□●●□□□□●●□□●●□□●●□●●□");
+        Console.WriteLine("□□●●□□●●□□□●●●●●●□□●●□□□□●●□□●●□□●●□●●□");
+        Console.WriteLine("□□□●●●●□□□□●□□□□□□□●●●●●□●●●□●●●●●●□●●□");
+        Console.WriteLine("□□□□□□□□□□□●●●●●●□□●●●●●□●●●□□□□□□□□●●□");
+        Console.WriteLine("□□□□●●□□□□□□□●●□□□□□□□□□□●●□□●●□□□□□□□□");
+        Console.WriteLine("□●●●●●●●●□●●●●●●●●□□□□□□□●●□□●●●●●●●●□□");
+        Console.WriteLine("□●●●●●●●●□●●●●●●●●□□□□□□□●●□□●●●●●●●●□□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□□□□□□□●●●●●□□□□□●●●●□□□□●●□●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□□●●●●●●□□□●●●●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□●●□□□□●●□□●●□●●□●●●□□□□□");
+        Console.WriteLine("□□□□□□□●●□□●●□□●●□□□□□□□□●●●●●□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●●●●●□□●●□□□□□□□□□□□□□□●●□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□●●□□□□●●□□□□●●●●□□□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□□●●●●●●□□□□●●□□●●□□□□□□□");
+        Console.WriteLine("□□□□□□□●●□□□□□□□□●●●●□□□□□□●●●●□□□□□□□□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+        Console.WriteLine("□　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□"); 
+        Console.Write("□　　　　　　　　　　");
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.Write("오로나민 PC방");
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("은 회원제로 운영됩니다.　　　　　　　　　　");
-        Console.Write("　　　　　　　　　　　　　회원님의 ");
+        Console.WriteLine("은 회원제로 운영됩니다.　　　　　　　　　□");
+        Console.Write("□　　　　　　　　　　　　회원님의 ");
         Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.Write("성함");
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("을 입력해주세요　　　　　　　　　　　　");
+        Console.WriteLine("을 입력해주세요　　　　　　　　　　　□");
+        Console.WriteLine("□　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　□");
+        Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
         Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
-        Console.WriteLine("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　");
+        Console.Write("  회원명 : ");
         string name = Console.ReadLine();
-		strings[0] = name;
-		strings[1] = "전사"; // 직업 선택하기
-		return strings;
+        strings[0] = name;
+        strings[1] = "전사"; // 직업 선택하기
+        return strings;
 
-	}
-	public ConsoleUtility()
+    }
+    public ConsoleUtility()
 	{
 		
 	}
