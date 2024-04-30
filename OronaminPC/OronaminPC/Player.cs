@@ -86,7 +86,7 @@
         }
         public int MonsterAttack()
         {
-            double errorValue = Math.Ceiling((double)(attack/10)); //공격력 오차값, 오차가 소수점이라면 무조건 올림 처리
+            double errorValue = Math.Ceiling((double)attack/10); //공격력 오차값, 오차가 소수점이라면 무조건 올림 처리
             Random random = new Random();
 
             int Damage = random.Next(attack-(int)errorValue, attack+(int)errorValue);
