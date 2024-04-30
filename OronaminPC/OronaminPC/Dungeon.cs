@@ -37,18 +37,21 @@
             Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
             int number = ConsoleUtility.InputCheck(userInput, 1);
-            if (number == 0)
+
+            switch(number)
             {
-                return;
-            }
-            else
-            {
-                Console.WriteLine("　똑디 말해라 문디 자슥아");
-                Thread.Sleep(1000);
-                this.EnterDungeon();
+                case 0:
+                    return;
+                case 1:
+
+                default:
+                    Console.WriteLine("　똑디 말해라 문디 자슥아");
+                    Thread.Sleep(1000);
+                    this.EnterDungeon();
+                    break;
             }
         }
-        public void Battle()//몬스터 생성과 턴 변경
+        public Monster[] Battle()//몬스터 생성과 턴 변경
         {
             Random random = new Random();
             int monsterCount = random.Next(1, 4);
@@ -59,35 +62,9 @@
                 battleMonster[i] = monster[random.Next(1,monster.Count())];
                 Console.WriteLine(battleMonster[i].name);
             }
-          
-            //ConsoleUtility.BattleInfo(battleMonster);
 
-            /*
-             * BattleInfo에 매개변수로 몬스터와 플레이어를 받아야함
-             * BattleInfo(플레이어정보, 생성된 몬스터)
-             * {
-             *      int 턴
-             *     
-             *      while(몬스터가 다 죽든, 플레이어가 다 죽을때까지)
-             *      {
-             *          ~배틀 화면 출력~
-             *          
-             *          턴이 플레이어일 때
-             *          {
-             *             공격할 몬스터 선택 입력받기
-             *             해당 몬스터 피통 -player.Attack()
-             *          }
-             *          턴이 몬스터일 때
-             *          {
-             *              어쩌구저쩌구
-             *          }
-             *          
-             *          ~턴 바꾸기~
-             *      }
-             * 
-             * }
-             */
-
+            return battleMonster;
+           
         }
 
     }
