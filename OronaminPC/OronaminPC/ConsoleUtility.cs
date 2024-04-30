@@ -111,43 +111,42 @@ public class ConsoleUtility
         }
         Console.WriteLine("현재 직업을 선택해주세요");
         Console.Write(">> ");
+
         string userInput = Console.ReadLine();
         int check;
-        int caseNum = 0;
+        string job = "";
+
         bool isValidInput = int.TryParse(userInput, out check);
         if (!isValidInput)
         {
             Console.WriteLine("　똑디 말해라 문디 자슥아");
             Thread.Sleep(1000);
-            this.SelectJob();
+            job = this.SelectJob();
         }
         else
         {
             int number = int.Parse(userInput);
-            if (number == 0 || number > 3)
+            if (number <= 0 || number > 3)
             {
                 Console.WriteLine("　똑디 말해라 문디 자슥아");
                 Thread.Sleep(1000);
-                this.SelectJob();
+                return this.SelectJob();
             }
-            caseNum = number;
-        }
-        string job;
-        switch(caseNum)
-        {
-            case 1:
+            else if (number == 1)
+            {
                 job = Job.단골학생.ToString();
-                break;
-            case 2:
+                return job;
+            }
+            else if (number == 2)
+            {
                 job = Job.게임폐인.ToString();
-                break;
-            case 3:
+                return job;
+            }
+            else if (number == 3)
+            {
                 job = Job.스트리머.ToString();
-                break;
-            default:
-                Console.WriteLine("이게 출력된다면 뭔가 뭔가인 상황입니다.");
-                Thread.Sleep(1000);
-                return "큰일큰일";
+                return job;
+            }
         }
         return job;
     }
