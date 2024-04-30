@@ -159,7 +159,7 @@ namespace OronaminPC
                     NextTurn(ref turn);
                 }
             }
-            if (game == 1)
+            if (game >= 1)
             {
                 cu.Defeat();
             }

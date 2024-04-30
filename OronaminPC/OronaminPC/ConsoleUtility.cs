@@ -38,7 +38,7 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("  2. 저기요 여 에어컨 좀 틀아주소 (인벤토리)");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("  3. 아까시 요 쇠주는 안파나? (상점)");
+        Console.WriteLine("  3. 알바야 쇠주는 안파나? (상점)");
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine("  4. 아따 매버라 라면으로 사람 잡겄소 (던전 입장)");
         Console.WriteLine("");
@@ -513,7 +513,7 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.White;
         for (int i = 0; i < monster.Length; i++)
         {
-            Console.WriteLine($"  Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
+            Console.WriteLine($"  {i + 1}. Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
         }
         Console.WriteLine();
         Console.WriteLine("  [내 정보]");
