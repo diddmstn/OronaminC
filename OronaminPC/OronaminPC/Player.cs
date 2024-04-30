@@ -78,7 +78,7 @@
             }
             else
             {
-                Console.WriteLine("　똑디 말해라 문디 자슥아");
+                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
                 Thread.Sleep(1000);
                 this.Status();
             }

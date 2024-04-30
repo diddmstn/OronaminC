@@ -21,7 +21,6 @@ namespace OronaminPC
         }
         public void EnterDungeon(ref Player player)
         {
-            //상원님 저도 여기 알아서 꾸며주세요 감사합니다^^7
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
@@ -60,7 +59,7 @@ namespace OronaminPC
                     BattleBoard(ref player);
                     break;
                 default:
-                    Console.WriteLine("　똑디 말해라 문디 자슥아");
+                    Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
                     Thread.Sleep(1000);
                     this.EnterDungeon(ref player);
                     break;
@@ -104,19 +103,28 @@ namespace OronaminPC
                             int index = cu.SelectMonster(player, monsters) - 1;
                             int damage = player.MonsterAttack();
                             Console.Clear();
-                            Console.WriteLine("Battle!!");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<League of Text RPG>>▧▧▧▧▧▧▧▧▧▧");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("                         B A T T L E");
+                            Console.ForegroundColor = ConsoleColor.White;
                             if(index == -2)
                             {
-                                Console.WriteLine("다시.");
+                                Console.WriteLine("  다시.");
                                 break;
                             }
-                            Console.WriteLine($"{player.name} 의 공격!");
-                            Console.WriteLine($"Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                            Console.WriteLine($"  {player.name} 의 공격!");
+                            Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine($" [데미지 : {damage}]");
+                            Console.ForegroundColor = ConsoleColor.White;
                             PlrAttack(monsters[index], damage);
                             NextTurn(ref turn);
                             break;
                         default:
-                            Console.WriteLine("다시.");
+                            Console.WriteLine("  다시.");
                             break;
                     }
                 }
@@ -124,13 +132,22 @@ namespace OronaminPC
                 {
                     // 몬스터 턴
                     Console.Clear();
-                    Console.WriteLine("Battle!!");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<League of Text RPG>>▧▧▧▧▧▧▧▧▧▧");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("                         B A T T L E");
+                    Console.ForegroundColor = ConsoleColor.White;
                     for (int i = 0; i < monsters.Length; i++)
                     {
                         if (monsters[i].IsDead != true)
                         {
-                            Console.WriteLine($"{monsters[i].name} 의 공격!");
-                            Console.WriteLine($"{player.name} 을(를) 맞췄습니다. [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
+                            Console.WriteLine($"  {monsters[i].name} 의 공격!");
+                            Console.Write($"  {player.name} 을(를) 맞췄습니다. ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($" [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
+                            Console.ForegroundColor = ConsoleColor.White;
                             player.health -= monsters[i].atk - (int)(Math.Ceiling(monsters[i].atk * (player.defense * 0.01))); // 체력이 0 이하로 떨어지면 0으로 고정
                             if(player.health < 0)
                             {
@@ -144,18 +161,20 @@ namespace OronaminPC
             }
             if (game == 1)
             {
-                // ConsoleUtility 패배 화면 출력
+                cu.Defeat();
             }
             else if(game == -1) 
             {
-                // ConsoleUtility 승리 화면 출력
+                cu.Victory();
             }
         }
 
         public void NextTurn(ref int turn)
         {
             Console.WriteLine();
-            Console.WriteLine("계속하려면 아무거나 입력");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("  턴을 바꿀 차례야! Enter를 눌러보자!");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             turn++;
         }
