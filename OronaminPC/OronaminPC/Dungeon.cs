@@ -27,15 +27,18 @@
 
             string userInput = Console.ReadLine();
             int number = ConsoleUtility.InputCheck(userInput, 1);
-            if (number == 0)
+
+            switch(number)
             {
-                return;
-            }
-            else
-            {
-                Console.WriteLine("　똑디 말해라 문디 자슥아");
-                Thread.Sleep(1000);
-                this.EnterDungeon();
+                case 0:
+                    return;
+                case 1:
+
+                default:
+                    Console.WriteLine("　똑디 말해라 문디 자슥아");
+                    Thread.Sleep(1000);
+                    this.EnterDungeon();
+                    break;
             }
         }
         public Monster[] Battle()//몬스터 생성과 턴 변경
