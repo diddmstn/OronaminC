@@ -16,7 +16,7 @@
             monster.Add(new Monster(7, "바론", 25, 300));
            
         }
-        public void EnterDungeon()
+        public void EnterDungeon(Player player)
         {
             //상원님 저도 여기 알아서 꾸며주세요 감사합니다^^7
             Console.Clear();
@@ -33,15 +33,16 @@
                 case 0:
                     return;
                 case 1:
-
+                    ConsoleUtility.BattleInfo(player,Battle());
+                    break;
                 default:
                     Console.WriteLine("　똑디 말해라 문디 자슥아");
                     Thread.Sleep(1000);
-                    this.EnterDungeon();
+                    this.EnterDungeon(player);
                     break;
             }
         }
-        public Monster[] Battle()//몬스터 생성과 턴 변경
+        public Monster[] Battle()//몬스터 생성
         {
             Random random = new Random();
             int monsterCount = random.Next(1, 4);
