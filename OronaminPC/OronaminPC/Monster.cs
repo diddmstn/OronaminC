@@ -43,33 +43,34 @@ namespace OronaminPC
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        public class Minion : Monster
-        {
-            public Minion(int _level, string _name, int _atk, int _hp) : base(1, "미니언", (new Random().Next(2, 7)), 50) { }
-        }
-        public class CanonMinion : Monster
-        {
-            public CanonMinion(int _level, string _name, int _atk, int _hp) : base(2, "대포미니언", (new Random().Next(4, 9)), 100) { }
-        }
-        public class EmptyBug : Monster
-        {
-            public EmptyBug(int _level, string _name, int _atk, int _hp) : base(3, "공허충", (new Random().Next(6, 11)), 150) { }
-        }
-        public class MonBlue : Monster
-        {
-            public MonBlue(int _level, string _name, int _atk, int _hp) : base(4, "블루", (new Random().Next(9, 15)), 175) { }
-        }
-        public class MonRed : Monster
-        {
-            public MonRed(int _level, string _name, int _atk, int _hp) : base(5, "레드", (new Random().Next(12, 18)), 200) { }
-        }
-        public class Dragon : Monster
-        {
-            public Dragon(int _level, string _name, int _atk, int _hp) : base(6, "용", (new Random().Next(15, 25)), 250) { }
-        }
-        public class Baron : Monster
-        {
-            public Baron(int _level, string _name, int _atk, int _hp) : base(7, "바론", (new Random().Next(20, 30)), 300) { }
-        }
+      
+    }
+    public class Minion : Monster
+    {
+        public Minion(int _level, string _name, int _atk, int _hp) : base(1, "미니언", (new Random().Next(2, 7)), 50) { }
+    }
+    public class CanonMinion : Monster
+    {
+        public CanonMinion(int _level, string _name, int _atk, int _hp) : base(2, "대포미니언", (new Random().Next(4, 9)), 100) { }
+    }
+    public class EmptyBug : Monster
+    {
+        public EmptyBug(int _level, string _name, int _atk, int _hp) : base(3, "공허충", (new Random().Next(6, 11)), 150) { }
+    }
+    public class MonBlue : Monster
+    {
+        public MonBlue(int _level, string _name, int _atk, int _hp) : base(4, "블루", (new Random().Next(9, 15)), 175) { }
+    }
+    public class MonRed : Monster
+    {
+        public MonRed(int _level, string _name, int _atk, int _hp) : base(5, "레드", (new Random().Next(12, 18)), 200) { }
+    }
+    public class Dragon : Monster
+    {
+        public Dragon(int _level, string _name, int _atk, int _hp) : base(6, "용", (new Random().Next(15, 25)), 250) { }
+    }
+    public class Baron : Monster
+    {
+        public Baron(int _level, string _name, int _atk, int _hp) : base(7, "바론", (new Random().Next(20, 30)), 300) { }
     }
 }

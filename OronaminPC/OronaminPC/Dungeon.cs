@@ -3,12 +3,16 @@
     internal class Dungeon
     {
         int level = 1;
-       // List<Monster> monster = new List<Monster>();
+        List<Monster> monster = new List<Monster>();
         
         public Dungeon()
         {
             //몬스터 추가
-            //Monster monster= new Monster();
+            //Monster monster= new Monster(1, "미니언", new Random().Next(2, 7), 50);
+            //Minion minon = new Minion();
+            //int _level, string _name, int _atk, int _hp) : base(1, "미니언", (new Random().Next(2, 7)), 50
+
+           // monster.Add(1, "미니언", new Random().Next(2, 7), 50);
 
         }
         public void EnterDungeon()
