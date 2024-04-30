@@ -14,7 +14,7 @@
                 {
                     case 0:
                         Console.Clear();
-                        Console.WriteLine("  안녕히가세요~");
+                        Console.WriteLine("  다신 오지 마세요~! (つ ^^)つ");
                         Thread.Sleep(1000);
                         return;
                     case 1:
