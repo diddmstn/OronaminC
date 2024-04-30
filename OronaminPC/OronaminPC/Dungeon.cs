@@ -139,6 +139,7 @@ namespace OronaminPC
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("                         B A T T L E");
                     Console.ForegroundColor = ConsoleColor.White;
+                    int vic = 0;
                     for (int i = 0; i < monsters.Length; i++)
                     {
                         if (monsters[i].IsDead != true)
@@ -154,6 +155,14 @@ namespace OronaminPC
                                 player.health = 0;
                             }
                         }
+                        else if (monsters[i].IsDead == true) // 승리 조건 확인 코드
+                        {
+                            vic++;
+                        }
+                        if (vic == monsters.Length)
+                        {
+                            game = -1;
+                        } // 여기까지
                         PlrDeathCheck(player, ref game);
                     }
                     NextTurn(ref turn);
