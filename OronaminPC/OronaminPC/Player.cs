@@ -1,6 +1,6 @@
 ﻿namespace OronaminPC
 {
-    internal class Player
+    public class Player
     {
         public string name { get; set; }
         public string job { get; set; }
