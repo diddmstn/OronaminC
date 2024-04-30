@@ -25,12 +25,12 @@ public class ConsoleUtility
 	public int Menu()
 	{
 		Console.Clear();
-        // 메인 메뉴
-        Console.WriteLine("");
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("　　　　　　　　　　<<5로나민 PC방>>　　　　　　　　　　");
+        Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine("　　　　　　　　　　　[ 메  뉴 ]　　　　　　　　　　　　");
+        Console.WriteLine("　　　　　　　　　  　　[ 메  뉴 ]　　　　　　　　　　　　");
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("");
         Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -50,8 +50,11 @@ public class ConsoleUtility
         Console.WriteLine("  무엇을 도와드릴까요 손님? ＼( ⌒  ∨ ⌒)／ 　　　　　　　");
         Console.WriteLine("  >>");
         Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+        Console.ForegroundColor = ConsoleColor.White;
         string userInput = Console.ReadLine();
-		int number = InputCheck(userInput, 3);
+		int number = InputCheck(userInput, 4);
 		return number;
     }
 
@@ -102,16 +105,29 @@ public class ConsoleUtility
     public string SelectJob()
     {
         Console.Clear();
-        // 여기서부터 디자인 하시면 됩니다 상원님^^
-        Console.WriteLine("직업 선택");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
+        Console.ForegroundColor= ConsoleColor.Magenta;
+        Console.WriteLine("                      [직업 선택]");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
         int count = 1;
         foreach (var jobs in Enum.GetValues(typeof(Job)))
         {
-            Console.Write($"{count++}. ");
+            Console.Write($"                     {count++}. ");
             Console.WriteLine($"{jobs}");
         }
-        Console.WriteLine("현재 직업을 선택해주세요");
-        Console.Write(">> ");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("          양심껏 당신의 현재 직업을 선택해주세요");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
+        Console.Write("  ▶ ");
 
         string userInput = Console.ReadLine();
         int check;

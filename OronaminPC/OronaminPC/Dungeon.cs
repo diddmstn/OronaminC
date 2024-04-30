@@ -20,11 +20,21 @@
         {
             //상원님 저도 여기 알아서 꾸며주세요 감사합니다^^7
             Console.Clear();
-            Console.WriteLine("던전");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("                        <<던전>>");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("던전으로 들어가 몬스터와 전투를 진행하실 수 있습니다.\n");
+            Console.WriteLine("");
             Console.WriteLine("1. 던전입장");
             Console.WriteLine("0. 나가기");
-
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+            Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
             int number = ConsoleUtility.InputCheck(userInput, 1);
 

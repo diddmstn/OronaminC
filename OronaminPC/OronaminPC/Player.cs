@@ -42,14 +42,19 @@
         public void Status()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("         주문하신 아이스 커피 나왔습니다~!");
-            Console.WriteLine($"                 <<상 태 보 기>>");
+            Console.WriteLine("            주문하신 아이스 커피 나왔습니다~!");
+            Console.WriteLine($"                     <<상 태 보 기>>");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"  워메 카페인이 들어가니께 몸 상태가 달라져부러야\n");
             Console.WriteLine($"  Lv. {level.ToString("00")}");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"  {name} ({job})");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"  공격력 : {attack}");
             Console.WriteLine($"  방어력 : {defense}");
             Console.WriteLine($"  체  력 : {health}");
@@ -62,6 +67,9 @@
             Console.WriteLine("　무엇을 도와드릴까요 손님? ＼( ⌒  ∨ ⌒)／ 　　　　　　　");
             Console.WriteLine("　>>");
             Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+            Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
             int number = ConsoleUtility.InputCheck(userInput, 0);
             if (number == 0)
