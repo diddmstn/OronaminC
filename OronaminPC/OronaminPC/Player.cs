@@ -18,10 +18,25 @@
         {
             name = _name;
             job = _job;
-            level = 1; 
-            attack = 10;   
-            defense = 5;
-            health = 100;
+            level = 1;
+            if (_job == "단골학생")
+            {
+                attack = 10;
+                defense = 5;
+                health = 100;
+            }
+            if (_job == "게임폐인")
+            {
+                attack = 15;
+                defense = 0;
+                health = 70;
+            }
+            if (_job == "스트리머")
+            {
+                attack = 5;
+                defense = 10;
+                health = 120;
+            }
             gold = 1500;
         }
         public void Status()
