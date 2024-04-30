@@ -38,7 +38,7 @@
                 this.EnterDungeon();
             }
         }
-        public void Battle()//몬스터 생성과 턴 변경
+        public Monster[] Battle()//몬스터 생성과 턴 변경
         {
             Random random = new Random();
             int monsterCount = random.Next(1, 4);
@@ -49,7 +49,8 @@
                 battleMonster[i] = monster[random.Next(1,monster.Count())];
                 Console.WriteLine(battleMonster[i].name);
             }
-          
+
+            return battleMonster;
             //ConsoleUtility.BattleInfo(battleMonster);
 
             /*
