@@ -94,12 +94,74 @@ public class ConsoleUtility
         Console.Write("  회원명 : ");
         string name = Console.ReadLine();
         strings[0] = name;
-        strings[1] = "전사"; // 직업 선택하기
-        return strings;
+		strings[1] = SelectJob();
+		return strings;
 
+	}
+
+    public string SelectJob()
+    {
+        Console.Clear();
+        // 여기서부터 디자인 하시면 됩니다 상원님^^
+        Console.WriteLine("ァ");
+        Console.WriteLine("");
+        Console.WriteLine("  <<직업 선택>>");
+        int count = 1;
+        foreach (var jobs in Enum.GetValues(typeof(Job)))
+        {
+            Console.Write(  $"{count++}. ");
+            Console.WriteLine($"{jobs}");
+        }
+        Console.WriteLine("현재 직업을 선택해주세요");
+        Console.Write(">> ");
+
+        string userInput = Console.ReadLine();
+        int check;
+        string job = "";
+
+        bool isValidInput = int.TryParse(userInput, out check);
+        if (!isValidInput)
+        {
+            Console.WriteLine("　똑디 말해라 문디 자슥아");
+            Thread.Sleep(1000);
+            job = this.SelectJob();
+        }
+        else
+        {
+            int number = int.Parse(userInput);
+            if (number <= 0 || number > 3)
+            {
+                Console.WriteLine("　똑디 말해라 문디 자슥아");
+                Thread.Sleep(1000);
+                return this.SelectJob();
+            }
+            else if (number == 1)
+            {
+                job = Job.단골학생.ToString();
+                return job;
+            }
+            else if (number == 2)
+            {
+                job = Job.게임폐인.ToString();
+                return job;
+            }
+            else if (number == 3)
+            {
+                job = Job.스트리머.ToString();
+                return job;
+            }
+        }
+        return job;
     }
-    public ConsoleUtility()
+	public ConsoleUtility()
 	{
 		
 	}
+
+    public enum Job
+    {
+        단골학생,
+        게임폐인,
+        스트리머
+    }
 }
