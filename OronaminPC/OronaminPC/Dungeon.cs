@@ -18,10 +18,25 @@
         }
         public void EnterDungeon()
         {
+            //상원님 저도 여기 알아서 꾸며주세요 감사합니다^^7
             Console.Clear();
             Console.WriteLine("던전");
-            Console.WriteLine("던전으로 들어가 몬스터와 전투를 진행하실 수 있습니다.");
+            Console.WriteLine("던전으로 들어가 몬스터와 전투를 진행하실 수 있습니다.\n");
             Console.WriteLine("1. 던전입장");
+            Console.WriteLine("0. 나가기");
+
+            string userInput = Console.ReadLine();
+            int number = ConsoleUtility.InputCheck(userInput, 1);
+            if (number == 0)
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("　똑디 말해라 문디 자슥아");
+                Thread.Sleep(1000);
+                this.EnterDungeon();
+            }
         }
         public void Battle()//몬스터 생성과 턴 변경
         {
