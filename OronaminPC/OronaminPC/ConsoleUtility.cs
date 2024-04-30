@@ -112,8 +112,9 @@ public class ConsoleUtility
         Console.WriteLine("현재 직업을 선택해주세요");
         Console.Write(">> ");
         string userInput = Console.ReadLine();
-        int number;
-        bool isValidInput = int.TryParse(userInput, out number);
+        int check;
+        int caseNum = 0;
+        bool isValidInput = int.TryParse(userInput, out check);
         if (!isValidInput)
         {
             Console.WriteLine("　똑디 말해라 문디 자슥아");
@@ -122,16 +123,17 @@ public class ConsoleUtility
         }
         else
         {
-            number = int.Parse(userInput);
+            int number = int.Parse(userInput);
             if (number == 0 || number > 3)
             {
                 Console.WriteLine("　똑디 말해라 문디 자슥아");
                 Thread.Sleep(1000);
                 this.SelectJob();
             }
+            caseNum = number;
         }
         string job;
-        switch(number)
+        switch(caseNum)
         {
             case 1:
                 job = Job.단골학생.ToString();
@@ -144,6 +146,7 @@ public class ConsoleUtility
                 break;
             default:
                 Console.WriteLine("이게 출력된다면 뭔가 뭔가인 상황입니다.");
+                Thread.Sleep(1000);
                 return "큰일큰일";
         }
         return job;
