@@ -44,7 +44,7 @@ namespace OronaminPC
                         Thread.Sleep(1000);
                         break;
                     case 4:
-                        dungeon.EnterDungeon();
+                        dungeon.EnterDungeon(player);
                         break;
                     default:
                         Console.WriteLine("손님~ 주문은 똑바로 하셔야죠~");
