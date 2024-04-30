@@ -32,14 +32,14 @@ namespace OronaminPC
             if (IsDead)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"  {name}이(가) 숨을 거뒀습니다. RIP...");
+                Console.WriteLine($"  {name}이(가) 결국 우리의 곁을 떠나 무지개 다리를...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"  {exp}의 경험치를 획득하였습니다!");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"  {name}이(가) {damage}의 피해를 입고 체력 {hp}이(가) 남았습니다!");
+                Console.WriteLine($"  {name}이(가) {damage}의 피해를 입고 삶에 대한 미련이 {hp}만큼 남았습니다!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }

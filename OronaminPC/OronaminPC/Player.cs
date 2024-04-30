@@ -64,7 +64,7 @@
             Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
-            Console.WriteLine("　무엇을 도와드릴까요 손님? ＼( ⌒  ∨ ⌒)／ 　　　　　　　");
+            Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
             Console.WriteLine("　>>");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Yellow;
