@@ -103,13 +103,11 @@ public class ConsoleUtility
     {
         Console.Clear();
         // 여기서부터 디자인 하시면 됩니다 상원님^^
-        Console.WriteLine("ァ");
-        Console.WriteLine("");
-        Console.WriteLine("  <<직업 선택>>");
+        Console.WriteLine("직업 선택");
         int count = 1;
         foreach (var jobs in Enum.GetValues(typeof(Job)))
         {
-            Console.Write(  $"{count++}. ");
+            Console.Write($"{count++}. ");
             Console.WriteLine($"{jobs}");
         }
         Console.WriteLine("현재 직업을 선택해주세요");
