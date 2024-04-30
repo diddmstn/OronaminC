@@ -1,22 +1,25 @@
-﻿namespace OronaminPC
+﻿using static System.Net.Mime.MediaTypeNames;
+using System;
+
+namespace OronaminPC
 {
     internal class Dungeon
     {
         int level = 1;
         List<Monster> monster = new List<Monster>();
-        
+
         public Dungeon()
         {
-            monster.Add(new Monster(1, "미니언", 5 , 50));
-            monster.Add(new Monster(2, "대포미니언",7, 100));
+            monster.Add(new Monster(1, "미니언", 5, 50));
+            monster.Add(new Monster(2, "대포미니언", 7, 100));
             monster.Add(new Monster(3, "공허충", 9, 150));
             monster.Add(new Monster(4, "블루", 12, 175));
             monster.Add(new Monster(5, "레드", 15, 200));
             monster.Add(new Monster(6, "용", 20, 250));
             monster.Add(new Monster(7, "바론", 25, 300));
-           
+
         }
-        public void EnterDungeon(Player player)
+        public void EnterDungeon(ref Player player)
         {
             //상원님 저도 여기 알아서 꾸며주세요 감사합니다^^7
             Console.Clear();
@@ -49,35 +52,139 @@
             string userInput = Console.ReadLine();
             int number = ConsoleUtility.InputCheck(userInput, 1);
 
-            switch(number)
+            switch (number)
             {
                 case 0:
                     return;
                 case 1:
-                    ConsoleUtility.BattleInfo(player,Battle());
+                    BattleBoard(ref player);
                     break;
                 default:
                     Console.WriteLine("　똑디 말해라 문디 자슥아");
                     Thread.Sleep(1000);
-                    this.EnterDungeon(player);
+                    this.EnterDungeon(ref player);
                     break;
             }
         }
-        public Monster[] Battle()//몬스터 생성
+        public Monster[] GenerateMonster()//몬스터 생성
         {
             Random random = new Random();
             int monsterCount = random.Next(1, 4);
-            Monster[] battleMonster =new Monster[monsterCount];
+            Monster[] battleMonster = new Monster[monsterCount];
 
-            for(int i = 0; i< monsterCount; i++)//배열에 몬스터 추가
+            for (int i = 0; i < monsterCount; i++)//배열에 몬스터 추가
             {
-                battleMonster[i] = monster[random.Next(1,monster.Count())];
+                battleMonster[i] = monster[random.Next(1, monster.Count())];
                 Console.WriteLine(battleMonster[i].name);
             }
 
             return battleMonster;
-           
+
         }
 
+        public void BattleBoard(ref Player player)
+        {
+            int pHpStart = player.health;
+            int game = 0; // 1일때 패배 -1일때 승리 -> 필요한가 모르곘네
+            int turn = 0;
+            ConsoleUtility cu = new ConsoleUtility();
+            Monster[] monsters = GenerateMonster();
+            while (game == 0)
+            {
+                Console.Clear();
+                cu.BattleInfo(ref player, monsters, pHpStart);
+                if (turn % 2 == 0)
+                {
+                    // 플레이어 턴
+                    string action = cu.Action();
+                    switch (action)
+                    {
+                        case "1":
+                            // 공격
+                            int index = cu.SelectMonster(player, monsters) - 1;
+                            int damage = player.MonsterAttack();
+                            Console.Clear();
+                            Console.WriteLine("Battle!!");
+                            if(index == -2)
+                            {
+                                Console.WriteLine("다시.");
+                                break;
+                            }
+                            Console.WriteLine($"{player.name} 의 공격!");
+                            Console.WriteLine($"Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                            PlrAttack(monsters[index], damage);
+                            NextTurn(ref turn);
+                            break;
+                        default:
+                            Console.WriteLine("다시.");
+                            break;
+                    }
+                }
+                else
+                {
+                    // 몬스터 턴
+                    Console.Clear();
+                    Console.WriteLine("Battle!!");
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].IsDead != true)
+                        {
+                            Console.WriteLine($"{monsters[i].name} 의 공격!");
+                            Console.WriteLine($"{player.name} 을(를) 맞췄습니다. [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
+                            player.health -= monsters[i].atk - (int)(Math.Ceiling(monsters[i].atk * (player.defense * 0.01))); // 체력이 0 이하로 떨어지면 0으로 고정
+                            if(player.health < 0)
+                            {
+                                player.health = 0;
+                            }
+                        }
+                        PlrDeathCheck(player, ref game);
+                    }
+                    NextTurn(ref turn);
+                }
+            }
+            if (game == 1)
+            {
+                // ConsoleUtility 패배 화면 출력
+            }
+            else if(game == -1) 
+            {
+                // ConsoleUtility 승리 화면 출력
+            }
+        }
+
+        public void NextTurn(ref int turn)
+        {
+            Console.WriteLine();
+            Console.WriteLine("계속하려면 아무거나 입력");
+            Console.ReadLine();
+            turn++;
+        }
+
+        public void LoseCheck(bool lose, ref int game)
+        {
+            if(lose == true)
+            {
+                game++;
+            }
+        }
+        public void PlrDeathCheck(Player player, ref int game)
+        {
+            bool temp;
+            if(player.health <= 0)
+            {
+                LoseCheck(temp = true, ref game);
+            }
+            else
+            {
+                LoseCheck(temp = false, ref game);
+            }
+        }
+
+
+        public void PlrAttack(Monster monster, int damage)
+        {
+            int temp = monster.hp; // 쳐맞기전 몬스터 체력
+            monster.TakeDamage(damage);
+        }
     }
 }

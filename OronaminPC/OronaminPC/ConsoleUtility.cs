@@ -168,12 +168,10 @@ public class ConsoleUtility
         return job;
     }
 
-    public static void BattleInfo(Player player, Monster[] monster)
+    public void BattleInfo(ref Player player, Monster[] monster, int pHpStart)
     {
-        int turn = 0;
-        int pHpStart = player.health;
-        Console.WriteLine("  Battle!!\n");
-
+        //int pHpStart = _pHpStart;
+        Console.WriteLine("Battle!!\n");
         for(int i = 0; i < monster.Length; i++)
         {
             Console.WriteLine($"  Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
@@ -183,21 +181,27 @@ public class ConsoleUtility
         Console.WriteLine($"  Lv.{player.level} {player.name} ({player.job})");
         Console.WriteLine($"  HP {player.health}/{pHpStart}");
         Console.WriteLine();
-        Console.WriteLine("  1. 공격");
+    }
+
+    public string Action()
+    {
+        Console.WriteLine("1. 공격");
         Console.WriteLine();
         Console.WriteLine("  원하시는 행동을 입력해주세요.");
         Console.Write("  >> ");
         string userInput = Console.ReadLine();
-        switch(userInput)
-        {
-            case "1":
-                // 공격할 몬스터 선택 & 공격할 몬스터 체력 -= attack
-                break;
-            default:
-                Console.WriteLine("  잘못된 입력입니다.");
-                break;
-        }
+        return userInput;
     }
+
+    public int SelectMonster(Player player, Monster[] monster)
+    {
+        Console.WriteLine("공격하기 원하는 몬스터를 선택해주세요.");
+        Console.Write(">> ");
+        string userInput = Console.ReadLine();
+        int number = InputCheck(userInput, monster.Length);
+        return number;
+    }
+
 	public ConsoleUtility()
 	{
 		
