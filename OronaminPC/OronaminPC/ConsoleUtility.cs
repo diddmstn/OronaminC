@@ -604,8 +604,37 @@ public class ConsoleUtility
         Console.WriteLine("┗ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ┛");
         Thread.Sleep(3600);
     }
+    public static int GetPrintableLength(string str)
+    {
+        int length = 0;
+        foreach (char c in str)
+        {
+            if (char.GetUnicodeCategory(c) == System.Globalization.UnicodeCategory.OtherLetter)
+            {
+                length += 2;
+            }
+            else
+            {
+                length += 1;
+            }
+        }
 
-
+        return length;
+    }
+    public static string PadRightForMixedText(string str, int totalLength)
+    {
+        int currentLength = GetPrintableLength(str);
+        int padding = totalLength - currentLength;
+        return str.PadRight(str.Length + padding);
+    }
+    public static void PrintHighlight(string s1, string s2, string s3 = "")
+    {
+        Console.Write(s1);
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write(s2);
+        Console.ResetColor();
+        Console.WriteLine(s3);
+    }
     public enum Job
     {
         단골학생,
