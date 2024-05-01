@@ -117,6 +117,13 @@ namespace OronaminPC
                             }
                             Console.WriteLine($"  {player.name} 의 공격!");
                             Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
+                            bool crit = player.IsCritical();
+                            if (crit == true)
+                            {
+                                damage = damage * 2;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write(" 크리티컬!!");
+                            }
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.WriteLine($" [데미지 : {damage}]");
                             Console.ForegroundColor = ConsoleColor.White;

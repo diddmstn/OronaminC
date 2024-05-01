@@ -84,6 +84,22 @@
             }
 
         }
+
+        public bool IsCritical()
+        {
+            int criRate = level * 5;
+            Random random = new Random();
+            int critical = random.Next(0, 101);
+            if (critical >= 0 && critical <= criRate)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public int MonsterAttack()
         {
             double errorValue = Math.Ceiling((double)attack/10); //공격력 오차값, 오차가 소수점이라면 무조건 올림 처리
@@ -93,7 +109,5 @@
 
             return Damage;
         }
-
-
     }
 }
