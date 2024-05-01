@@ -433,7 +433,7 @@ public class ConsoleUtility
 
         if (File.Exists("./Save/SaveFile.json"))
         {
-            JObject jobject = SaveLoad.Load();//저장한 파일과 이름이 같은지 확인
+            JObject jobject = SaveLoad.Read();//저장한 파일과 이름이 같은지 확인
             if (name == jobject["playerName"].ToString())
             {
                 strings[0] = jobject["playerName"].ToString();

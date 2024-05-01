@@ -21,7 +21,7 @@ namespace OronaminPC
         {
             if (File.Exists("./Save/Test.json"))
             {
-                JObject jobject = SaveLoad.Load();//저장한 파일과 이름이 같은지 확인
+                JObject jobject = SaveLoad.Read();//저장한 파일과 이름이 같은지 확인
                 if (name == jobject["playerName"].ToString())//이름이 같다면 정보 셋팅
                 {
                     level = (int)jobject["playerLevel"];

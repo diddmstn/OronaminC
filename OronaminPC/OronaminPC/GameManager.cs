@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OronaminPC
 {
@@ -15,6 +18,14 @@ namespace OronaminPC
             Player player = new Player(str[0], str[1]);
             Dungeon dungeon = new Dungeon();
             SaveLoad saveLoad= new SaveLoad();
+            if (File.Exists("./Save/SaveFile.json"))
+            {
+                JObject jobject = SaveLoad.Read();//저장한 파일과 이름이 같은지 확인
+                if (player.name == jobject["playerName"].ToString())
+                {
+                    SaveLoad.Load(player, jobject);
+                }
+            };
             while (true)
             {
                 SaveLoad.Save(player);//save 

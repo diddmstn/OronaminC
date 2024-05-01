@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Reflection.Emit;
 
 namespace OronaminPC
 {
@@ -33,7 +34,7 @@ namespace OronaminPC
             File.WriteAllText(filePath, Save.ToString());//Save 폴더 안에 json 파일 만들기
 
         }
-        static public JObject Load()
+        static public JObject Read()
         {
             string readJson = File.ReadAllText(filePath);//json 파일 불러오기
             JObject jobject = JObject.Parse(readJson);
@@ -43,6 +44,14 @@ namespace OronaminPC
             return jobject;
 
 
+        }
+        static public void Load(Player player, JObject jobject)
+        {
+            player.level = (int)jobject["playerLevel"];
+            player.attack = (int)jobject["playerAttack"];
+            player.defense = (int)jobject["playerDefense"];
+            player.health = (int)jobject["playerHealth"];
+            player.gold = (int)jobject["playerGold"];
         }
 
     }
