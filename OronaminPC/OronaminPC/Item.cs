@@ -106,7 +106,7 @@ namespace OronaminPC
             }
             if (manaPoint != 0)
             {
-                Console.Write($"체  력 {(manaPoint >= 0 ? "+" : "")}{manaPoint}");
+                Console.Write($"마  력 {(manaPoint >= 0 ? "+" : "")}{manaPoint}");
                 Console.Write(" | ");
             }
             Console.WriteLine(" | ");
@@ -159,7 +159,7 @@ namespace OronaminPC
             }
             if (manaPoint != 0)
             {
-                Console.Write($"체  력 {(manaPoint >= 0 ? "+" : "")}{manaPoint}");
+                Console.Write($"마  력 {(manaPoint >= 0 ? "+" : "")}{manaPoint}");
                 Console.Write(" | ");
             }
             Console.WriteLine(" | ");
