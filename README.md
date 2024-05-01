@@ -34,6 +34,15 @@
 
 ---
 
+|게임 타이틀|직업 선택|
+|:------:|:------:|
+|![title](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/1_title.PNG?raw=true)|![job](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/2_job.PNG?raw=true)|
+|플레이어 네임 작성|플레이어 직업 선택|
+
+|메인 메뉴|상태 보기|
+|:------:|:------:|
+|![main](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/3_main.PNG?raw=true)|![stat](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/4_stat.PNG?raw=true)|
+|원하는 메뉴 선택|플레이어 상태 확인|
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer" />
 </div>
