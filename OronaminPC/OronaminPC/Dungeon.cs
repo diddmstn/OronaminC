@@ -1,5 +1,7 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 using System;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace OronaminPC
 {
@@ -131,6 +133,18 @@ namespace OronaminPC
                             PlrAttack(monsters[index], damage);
                             NextTurn(ref turn);
                             break;
+                        case "2":
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<League of Text RPG>>▧▧▧▧▧▧▧▧▧▧");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("                         B A T T L E");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            SkillAttack(ref player, monsters);
+                            NextTurn(ref turn);
+                            break;
                         default:
                             Console.WriteLine("  다시.");
                             break;
@@ -198,11 +212,35 @@ namespace OronaminPC
             }
         }
 
+        public void SkillAttack(ref Player player, Monster[] monsters)
+        {
+            int damage;
+            for(int index = 0; index < monsters.Length; index++)
+            {
+                if (monsters[index].IsDead == false)
+                {
+                    Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
+                    damage = player.Skill();
+                    bool crit = player.IsCritical();
+                    if (crit == true)
+                    {
+                        damage = damage * 2;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(" 크리티컬!!");
+                    }
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine($" [데미지 : {damage}]");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    PlrAttack(monsters[index], damage);
+                }
+            } 
+        }
+
         public void NextTurn(ref int turn)
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("  턴을 바꿀 차례야! Enter를 눌러보자!");
+            Console.WriteLine("  Enter를 눌러보자!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             turn++;
@@ -232,7 +270,16 @@ namespace OronaminPC
         public void PlrAttack(Monster monsters, int damage)
         {
             int temp = monsters.hp; // 쳐맞기전 몬스터 체력
-            monsters.TakeDamage(damage);
+            if (temp > 0)
+            {
+                monsters.TakeDamage(damage);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"  {monsters.name}은(는) 이미 싸늘히 식었습니다... 그만하세요...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }

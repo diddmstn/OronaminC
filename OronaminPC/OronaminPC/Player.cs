@@ -8,6 +8,7 @@
         public int attack { get; set; }
         public int defense {  get; set; }
         public int health { get; set; }
+        public int manaPoint {  get; set; }
         public int gold { get; set; }
      
         // 인벤토리 리스트
@@ -24,18 +25,21 @@
                 attack = 10;
                 defense = 5;
                 health = 100;
+                manaPoint = 50;
             }
             if (_job == "게임폐인")
             {
                 attack = 15;
                 defense = 0;
                 health = 70;
+                manaPoint = 200;
             }
             if (_job == "스트리머")
             {
                 attack = 5;
                 defense = 10;
                 health = 120;
+                manaPoint = 100;
             }
             gold = 1500;
         }
@@ -83,6 +87,29 @@
                 this.Status();
             }
 
+        }
+
+        public int Skill()
+        {
+            int damage = 0;
+            switch (this.job)
+            {
+                case "단골학생":
+                    Console.WriteLine("키보드 샷건");
+                    damage = this.attack * 3;
+                    return damage;
+                case "게임폐인":
+                    Console.WriteLine("꾸준함의 미학");
+                    damage = this.attack * 3;
+                    return damage;
+                case "스트리머":
+                    Console.WriteLine("후원 리액션");
+                    damage = this.attack * 3;
+                    return damage;
+                default:
+                    Console.WriteLine("직업 설정 에러");
+                    return damage;
+            }
         }
 
         public bool IsCritical()
