@@ -5,7 +5,7 @@ namespace OronaminPC
 {
     internal class Dungeon
     {
-        int level = 1;
+        int Dungeonlevel = 1;
         List<Monster> monster = new List<Monster>();
 
         public Dungeon()
@@ -36,7 +36,7 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("RPG 게임");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("이나 한판 해야겠구만");
+            Console.WriteLine($"이나 한판 해야겠구만 (현재 진행 : {Dungeonlevel}층)");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -68,13 +68,13 @@ namespace OronaminPC
         public Monster[] GenerateMonster()//몬스터 생성
         {
             Random random = new Random();
-            int monsterCount = random.Next(1, 4);
+            int monsterCount = random.Next(1, 5);
             Monster[] battleMonster = new Monster[monsterCount];
 
             for (int i = 0; i < monsterCount; i++)//배열에 몬스터 추가
             {
-                battleMonster[i] = monster[random.Next(1, monster.Count())];
-                Console.WriteLine(battleMonster[i].name);
+                battleMonster[i] = monster[random.Next(Dungeonlevel - 1, Dungeonlevel + 1)].ReturnDeepCopy();
+                
             }
 
             return battleMonster;
@@ -88,6 +88,7 @@ namespace OronaminPC
             int turn = 0;
             ConsoleUtility cu = new ConsoleUtility();
             Monster[] monsters = GenerateMonster();
+            
             while (game == 0)
             {
                 Console.Clear();
@@ -175,6 +176,7 @@ namespace OronaminPC
             else if(game == -1) 
             {
                 cu.Victory();
+                Dungeonlevel++;//던전 레벨증가
             }
         }
 
@@ -209,10 +211,10 @@ namespace OronaminPC
         }
 
 
-        public void PlrAttack(Monster monster, int damage)
+        public void PlrAttack(Monster monsters, int damage)
         {
-            int temp = monster.hp; // 쳐맞기전 몬스터 체력
-            monster.TakeDamage(damage);
+            int temp = monsters.hp; // 쳐맞기전 몬스터 체력
+            monsters.TakeDamage(damage);
         }
     }
 }
