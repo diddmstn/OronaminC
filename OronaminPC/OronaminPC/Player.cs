@@ -1,4 +1,6 @@
-﻿namespace OronaminPC
+﻿using Newtonsoft.Json.Linq;
+
+namespace OronaminPC
 {
     public class Player
     {
@@ -17,6 +19,20 @@
         
         public Player(string _name, string _job)
         {
+            if (File.Exists("./Save/Test.json"))
+            {
+                JObject jobject = SaveLoad.Load();//저장한 파일과 이름이 같은지 확인
+                if (name == jobject["playerName"].ToString())//이름이 같다면 정보 셋팅
+                {
+                    level = (int)jobject["playerLevel"];
+                    attack = (int)jobject["playerAttack"];
+                    defense = (int)jobject["playerDefense"];
+                    health = (int)jobject["playerHealth"];
+                    gold = (int)jobject["playerGold"];
+
+                    return;
+                }
+            }
             name = _name;
             job = _job;
             level = 1;

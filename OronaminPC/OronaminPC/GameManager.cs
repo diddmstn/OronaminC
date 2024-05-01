@@ -14,8 +14,10 @@ namespace OronaminPC
             string[] str = cu.Title();
             Player player = new Player(str[0], str[1]);
             Dungeon dungeon = new Dungeon();
+            SaveLoad saveLoad= new SaveLoad();
             while (true)
             {
+                SaveLoad.Save(player);//save 
                 int menu = cu.Menu();
                 switch (menu)
                 {
