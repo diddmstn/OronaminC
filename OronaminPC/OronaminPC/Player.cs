@@ -199,7 +199,7 @@ namespace OronaminPC
                     damage = this.attack * 3;
                     return damage;
                 case "게임폐인":
-                    Console.WriteLine("꾸준함의 미학");
+                    Console.WriteLine("채팅 러쉬");
                     damage = this.attack * 3;
                     return damage;
                 case "스트리머":
