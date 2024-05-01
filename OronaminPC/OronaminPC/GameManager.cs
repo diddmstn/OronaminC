@@ -16,6 +16,7 @@ namespace OronaminPC
             ConsoleUtility cu = new ConsoleUtility();
             string[] str = cu.Title();
             Player player = new Player(str[0], str[1]);
+            Shop shop = new Shop();
             Dungeon dungeon = new Dungeon();
             SaveLoad saveLoad= new SaveLoad();
             if (File.Exists("./Save/SaveFile.json"))
@@ -52,7 +53,7 @@ namespace OronaminPC
                         player.Inventory();
                         break;
                     case 3:
-                        player.Shop();
+                        shop.Shopping();
                         break;
                     case 4:
                         dungeon.EnterDungeon(ref player);
