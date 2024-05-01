@@ -513,7 +513,9 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.White;
         for (int i = 0; i < monster.Length; i++)
         {
-            Console.WriteLine($"  {i + 1}. Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
+            //Console.WriteLine($"  {i + 1}. Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
+            Console.WriteLine($"  {i + 1}. Lv.{monster[i].level} {monster[i].name} {(monster[i].hp <= 0 ? "\u001b[38;5;240mDead" : "\u001b[97mHP " + monster[i].hp)}");
+            Console.ResetColor();
         }
         Console.WriteLine();
         Console.WriteLine("  [내 정보]");
@@ -525,6 +527,7 @@ public class ConsoleUtility
     public string Action()
     {
         Console.WriteLine("  1. 공격");
+        Console.WriteLine("  2. 스킬 사용");
         Console.WriteLine();
         Console.WriteLine("  사람이라면 응당 골라야 할 것을 골라보자!");
         Console.Write("  >> ");
