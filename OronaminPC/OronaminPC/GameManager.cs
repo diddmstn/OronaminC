@@ -49,12 +49,10 @@ namespace OronaminPC
                         player.Status();
                         break;
                     case 2:
-                        Console.WriteLine("  지금 영하 18도에요 ^^"); // 인벤토리 추가 후 삭제 예정
-                        Thread.Sleep(1000);
+                        player.Inventory();
                         break;
                     case 3:
-                        Console.WriteLine("  경찰서는 112입니다 ^^7"); // 샵 추가 후 삭제 예정
-                        Thread.Sleep(1000);
+                        player.Shop();
                         break;
                     case 4:
                         dungeon.EnterDungeon(ref player);
