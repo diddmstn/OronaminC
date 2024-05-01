@@ -153,6 +153,13 @@ namespace OronaminPC
                         if (monsters[i].IsDead != true)
                         {
                             Console.WriteLine($"  {monsters[i].name} 의 공격!");
+                            bool dodge = player.IsDodge();
+                            if (dodge == true)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Blue;
+                                Console.Write(" 회피 성공!!");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
                             Console.Write($"  {player.name} 을(를) 맞췄습니다. ");
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($" [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
