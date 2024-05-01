@@ -17,8 +17,8 @@ namespace OronaminPC
         public string description { get; set; }
         public Type type { get; set; }
 
-        public bool IsEquip { get; private set; }
-        public bool IsPurchase { get; private set; }
+        public bool IsEquip { get; set; }
+        public bool IsPurchase { get; set; }
 
         public enum Type
         {
@@ -176,7 +176,7 @@ namespace OronaminPC
             Console.WriteLine("");
             Console.WriteLine("");
         }
-        internal void Purchased()
+        public void Purchased()
         {
             IsPurchase = true;
         }

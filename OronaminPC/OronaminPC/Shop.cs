@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace OronaminPC
             item.Add(new Item("박카스", Item.Type.음료수, "심장이 도킹도킹!!", 2500, 5, 10, 70, 20));
             item.Add(new Item("얼박사", Item.Type.음료수, "맛있는데 힘까지 넘쳐", 4000, 10, 20, 100, 30));
         }
-        public void Shopping()
+        public void ItemShop(ref List<Item>inven)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -42,38 +43,94 @@ namespace OronaminPC
 
             for (int i = 0; i < item.Count(); i++)
             {
-                //    Console.Write($"  - {i+1}. {item[i].name} {item[i].type} {item[i].description} {item[i].price} {item[i].attack} {item[i].defense} {item[i].health} {item[i].manaPoint}"); 
-
-                item[i].PrintItemShop(item[i].name, true, i + 1);
+                item[i].PrintItemShop(item[i].name, false, i + 1);
             }
 
-
-
+            Console.WriteLine("");
+            Console.WriteLine($"  1. 알바야 이거 얼마냐  (아이템 구매)");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
-            Console.WriteLine("　>>");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("　>> ");
             string userInput = Console.ReadLine();
-            int number = ConsoleUtility.InputCheck(userInput, 0);
-            if (number == 0)
+            int number = ConsoleUtility.InputCheck(userInput, 1);
+
+            if (number == -1)
+            {
+                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
+                Thread.Sleep(1000);
+                // 상점에서 쫓아내는 막말하기
+            }
+            else if (number == 0)
+            {
+                return;
+            }
+            else if (number == 1)
+            {
+                Shopping(ref inven);
+            }
+
+
+        }
+
+        public void Shopping(ref List<Item>inven)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("           "); // 바가지 멘트 추가
+            Console.WriteLine($"                 <<아이템 구매>>");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"  \n"); // 진상 멘트 추가
+            Console.WriteLine("");
+
+            for (int i = 0; i < item.Count(); i++)
+            {
+                item[i].PrintItemShop(item[i].name, true, i + 1);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine($"  어떤 걸로 드릴까요? 숫자로 말씀해주세요");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.WriteLine("   と( ⌒  ∨ ⌒)つ"); // 판매 멘트 추가
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("　>> ");
+            string userInput = Console.ReadLine();
+            int number = ConsoleUtility.InputCheck(userInput, 14);
+
+            if (number == -1)
+            {
+                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
+                Thread.Sleep(1000);
+                // 상점에서 쫓아내는 막말하기
+            }
+            else if (number == 0)
             {
                 return;
             }
             else
             {
-                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
-                Thread.Sleep(1000);
-                this.Shopping();
+                item[number-1].IsPurchase = true;
+                inven.Add(item[number-1]);
+                Shopping(ref inven);
             }
-
         }
-    }
-       
+    }   
 }

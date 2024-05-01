@@ -12,8 +12,8 @@ namespace OronaminPC
         public int health { get; set; }
         public int manaPoint {  get; set; }
         public int gold { get; set; }
-     
-        // 인벤토리 리스트
+
+        public List<Item> Inven = new List<Item>();
         // 레벨업 들어간다면 exp(경험치통) 경험치통이 레벨업에 따라 커지는 함수
         // 5 (count++) if count = 1 -> 5 * 2 예시^^
         
