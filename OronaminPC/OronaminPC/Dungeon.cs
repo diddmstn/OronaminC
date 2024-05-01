@@ -157,14 +157,18 @@ namespace OronaminPC
                             if (dodge == true)
                             {
                                 Console.ForegroundColor = ConsoleColor.Blue;
-                                Console.Write(" 회피 성공!!");
+                                Console.WriteLine(" 회피 성공!!");
                                 Console.ForegroundColor = ConsoleColor.White;
                             }
-                            Console.Write($"  {player.name} 을(를) 맞췄습니다. ");
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($" [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            player.health -= monsters[i].atk - (int)(Math.Ceiling(monsters[i].atk * (player.defense * 0.01))); // 체력이 0 이하로 떨어지면 0으로 고정
+                            else
+                            {
+                                Console.Write($"  {player.name} 을(를) 맞췄습니다. ");
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($" [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                player.health -= monsters[i].atk - (int)(Math.Ceiling(monsters[i].atk * (player.defense * 0.01))); // 체력이 0 이하로 떨어지면 0으로 고정
+                            }
+                            
                             if(player.health < 0)
                             {
                                 player.health = 0;
