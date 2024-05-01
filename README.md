@@ -32,5 +32,8 @@
     직업을 성장시키는 게임입니다.<br>
 </h5>
 
+---
+
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer" />
 </div>
