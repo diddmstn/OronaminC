@@ -17,7 +17,7 @@ namespace OronaminPC
         public string description { get; set; }
         public Type type { get; set; }
 
-        public bool IsEquip { get; set; }
+        public bool isEquip { get; set; }
         public bool IsPurchase { get; set; }
 
         public enum Type
@@ -76,14 +76,14 @@ namespace OronaminPC
         //    return list;
         //}
 
-        internal void PrintItemInventory(bool withNumber = false, int idx = 0)
+        internal void PrintItemInventory(string Itemname, bool withNumber = false, int idx = 0)
         {
             Console.Write("  - ");
             if (withNumber)
             {
                 Console.Write($"{idx} ");
             }
-            if (IsEquip)
+            if (isEquip)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("[");
@@ -98,9 +98,9 @@ namespace OronaminPC
 
             Console.Write(" | ");
             Console.WriteLine(description);
-            Console.Write(" | ");
 
-            Console.Write(" | ");
+
+            Console.Write("    | ");
             if (attack != 0)
             {
                 Console.Write($"공격력 {(attack >= 0 ? "+" : "")}{attack}");
@@ -121,13 +121,13 @@ namespace OronaminPC
                 Console.Write($"마  력 {(manaPoint >= 0 ? "+" : "")}{manaPoint}");
                 Console.Write(" | ");
             }
-            Console.WriteLine(" | ");
+            Console.WriteLine("");
 
         }
 
-        internal void ToggleEquipStatus()
+        public void ToggleEquipStatus()
         {
-            IsEquip = !IsEquip;
+            isEquip = !isEquip;
         }
 
         public void PrintItemShop(string itemname, bool withNumber = false, int idx = 0)

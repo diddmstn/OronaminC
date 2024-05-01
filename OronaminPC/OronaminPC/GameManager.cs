@@ -53,7 +53,7 @@ namespace OronaminPC
                         player.Inventory();
                         break;
                     case 3:
-                        shop.ItemShop(ref player.Inven);
+                        shop.ItemShop(ref player.inven);
                         break;
                     case 4:
                         dungeon.EnterDungeon(ref player);

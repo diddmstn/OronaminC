@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace OronaminPC
 {
@@ -8,15 +9,19 @@ namespace OronaminPC
         public string job { get; set; }
         public int level { get; set; }
         public int attack { get; set; }
-        public int defense {  get; set; }
+        public int attackBonus { get; set; }
+        public int defense { get; set; }
+        public int defenseBonus { get; set; }
         public int health { get; set; }
-        public int manaPoint {  get; set; }
+        public int healthBonus { get; set; }
+        public int manaPoint { get; set; }
+        public int manaPointBonus { get; set; }
         public int gold { get; set; }
 
-        public List<Item> Inven = new List<Item>();
+        public List<Item> inven = new List<Item>();
         // 레벨업 들어간다면 exp(경험치통) 경험치통이 레벨업에 따라 커지는 함수
         // 5 (count++) if count = 1 -> 5 * 2 예시^^
-        
+
         public Player(string _name, string _job)
         {
             if (File.Exists("./Save/Test.json"))
@@ -75,9 +80,10 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"  {name} ({job})");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  공격력 : {attack}");
-            Console.WriteLine($"  방어력 : {defense}");
-            Console.WriteLine($"  체  력 : {health}");
+            Console.WriteLine($"  공격력 : {attack} {(attackBonus > 0 ? $"(+ {attackBonus})":"")}");
+            Console.WriteLine($"  방어력 : {defense} {(defenseBonus > 0 ? $"(+ {defenseBonus})":"")}");
+            Console.WriteLine($"  체  력 : {health} {(healthBonus > 0 ? $"(+ {healthBonus})" : "")}");
+            Console.WriteLine($"  마  력 : {manaPoint} {(manaPointBonus > 0 ? $"(+ {manaPointBonus})" : "")}");
             Console.WriteLine($"  Gold   : {gold}G\n");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -119,8 +125,12 @@ namespace OronaminPC
             Console.WriteLine($"  아따 찹다찹다 한국이 아니고 러시아가 되부러쓰\n");
             Console.WriteLine("");
 
-            // 인벤토리 구성 추가 필요
-
+            for (int i = 0; i < inven.Count(); i++)
+            {
+                inven[i].PrintItemInventory(inven[i].name, false, i + 1);
+            }
+            Console.WriteLine("");
+            Console.WriteLine($"  1. "); // 장착장 이동 멘트 추가
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -133,18 +143,110 @@ namespace OronaminPC
             Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
             Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
-            int number = ConsoleUtility.InputCheck(userInput, 0);
+            int number = ConsoleUtility.InputCheck(userInput, 1);
             if (number == 0)
             {
                 return;
+            }
+            else if (number == 1)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("            네 에어컨 18도로 맞춰드렸습니다~!");
+                Console.WriteLine($"                     <<인 벤 토 리>>");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"  아따 찹다찹다 한국이 아니고 러시아가 되부러쓰\n");
+                Console.WriteLine("");
+
+                for (int i = 0; i < inven.Count(); i++)
+                {
+                    inven[i].PrintItemInventory(inven[i].name, true, i + 1);
+                }
+                Console.WriteLine("");
+                Console.WriteLine($""); // 장착할 아이템 선택 멘트
+                Console.WriteLine("");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+                Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
+                Console.WriteLine("　>>");
+                Console.WriteLine("");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+                Console.ForegroundColor = ConsoleColor.White;
+                string userInput2 = Console.ReadLine();
+                int number2 = ConsoleUtility.InputCheck(userInput2, 14);
+                ItemEquip(inven[number2 - 1]);
+                Inventory();
             }
             else
             {
                 Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
                 Thread.Sleep(1000);
-                this.Inventory();
             }
 
+        }
+
+        public void ItemEquip(Item item)
+        {
+            item.ToggleEquipStatus();
+            StatusUpdate(item);
+        }
+
+        public void StatusUpdate(Item item)
+        {
+            // 아이템 변수 (매개변수 : 아이템)
+            if (item.isEquip == true)
+            {
+                if (item.attack != 0)
+                {
+                    this.attack += item.attack;
+                    this.attackBonus += item.attack;
+                }
+                if (item.defense != 0)
+                {
+                    this.defense += item.defense;
+                    this.defenseBonus += item.defense;
+                }
+                if (item.health != 0)
+                {
+                    this.health += item.health;
+                    this.healthBonus += item.health;
+                }
+                if (item.manaPoint != 0)
+                {
+                    this.manaPoint += item.manaPoint;
+                    this.manaPointBonus += item.manaPoint;
+                }
+            }
+            else
+            {
+                if (item.attack != 0)
+                {
+                    this.attack -= item.attack;
+                    this.attackBonus -= item.attack;
+                }
+                if (item.defense != 0)
+                {
+                    this.defense -= item.defense;
+                    this.defenseBonus -= item.defense;
+                }
+                if (item.health != 0)
+                {
+                    this.health -= item.health;
+                    this.healthBonus -= item.health;
+                }
+                if (item.manaPoint != 0)
+                {
+                    this.manaPoint -= item.manaPoint;
+                    this.manaPointBonus -= item.manaPoint;
+                }
+            }
         }
 
         public int Skill()
