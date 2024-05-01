@@ -13,7 +13,6 @@ namespace OronaminPC
         public int atk { get; set; }
         public int hp { get; set; }
         public int exp { get; }
-
         public bool IsDead => hp <= 0;
 
         public Monster(int _level, string _name, int _atk, int _hp)
@@ -23,6 +22,10 @@ namespace OronaminPC
             atk = _atk;
             hp = _hp;
             exp = _level;
+        }
+        public Monster ReturnDeepCopy()
+        {
+            return (Monster)this.MemberwiseClone();
         }
 
         public void TakeDamage(int damage)
