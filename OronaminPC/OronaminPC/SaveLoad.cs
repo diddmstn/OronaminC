@@ -32,11 +32,15 @@ namespace OronaminPC
             Save.Add("playerName", player.name);
             Save.Add("playerJob", player.job);
             Save.Add("playerLevel", player.level);
+            Save.Add("playerExp", player.exp);
             Save.Add("playerAttack", player.attack-player.attackBonus);
             Save.Add("playerAttackBouns", player.attackBonus);
             Save.Add("playerDefense", player.defense- player.defenseBonus);
             Save.Add("playerDefenseBonus", player.defenseBonus);
-            Save.Add("playerHealth", player.health);
+            Save.Add("playerHealth", player.health-player.healthBonus);
+            Save.Add("playerHealthBonus", player.healthBonus);
+            Save.Add("playerManaPoint", player.manaPoint-player.manaPointBonus);
+            Save.Add("playerManaPointBonus", player.manaPointBonus);
             Save.Add("playerGold", player.gold);
             Save.Add("dungeonLevel", dungeonLevel);
             Save.Add("playerInven", playerInven);
@@ -77,9 +81,12 @@ namespace OronaminPC
 
             player.attackBonus = (int)jobject["playerAttackBouns"];
             player.defenseBonus = (int)jobject["playerDefenseBonus"];
+            player.healthBonus = (int)jobject["playerHealthBonus"];
+            player.manaPointBonus = (int)jobject["playerManaPointBonus"];
 
 
             player.level = (int)jobject["playerLevel"];
+            player.exp = (int)jobject["playerExp"];
             player.attack = (int)jobject["playerAttack"] + player.attackBonus;
             player.defense = (int)jobject["playerDefense"] + player.defenseBonus;
             player.health = (int)jobject["playerHealth"];
