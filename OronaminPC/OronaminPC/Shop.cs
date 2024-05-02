@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,15 @@ namespace OronaminPC
             item.Add(new Item("사무용 키보드", Item.Type.키보드, "일하기 싫을 때 흉기로", 1500, 0, 20, 0, 0));
             item.Add(new Item("게이밍 키보드", Item.Type.키보드, "역시 돈도 재능이다", 4000, 0, 40, 0, 0));
             item.Add(new Item("고장난 헤드셋", Item.Type.헤드셋, "한 쪽이 안들린다", 1000, 0, 0, 10, 0));
-            item.Add(new Item("저급한 헤드셋", Item.Type.헤드셋, "지지직은 BGM이겠지..", 2500, 0, 0, 20, 5));
-            item.Add(new Item("게이밍 헤드셋", Item.Type.헤드셋, "적의 숨소리가 들린다", 6000, 0, 0, 35, 15));
+            item.Add(new Item("저급한 헤드셋", Item.Type.헤드셋, "지지직은 BGM이겠지..", 2500, 0, 0, 20, 10));
+            item.Add(new Item("게이밍 헤드셋", Item.Type.헤드셋, "적의 숨소리가 들린다", 6000, 0, 0, 35, 25));
             item.Add(new Item("콜  라", Item.Type.음료수, "PC방 콜라 국룰이지", 300, 0, 0, 30, 0));
             item.Add(new Item("핫식스", Item.Type.음료수, "하루종일 게임 쌉가능", 500, 0, 0, 30, 10));
-            item.Add(new Item("레드불", Item.Type.음료수, "이거슨 합법적 각성제", 1500, 3, 5, 50, 15));
-            item.Add(new Item("박카스", Item.Type.음료수, "심장이 도킹도킹!!", 2500, 5, 10, 70, 20));
-            item.Add(new Item("얼박사", Item.Type.음료수, "맛있는데 힘까지 넘쳐", 4000, 10, 20, 100, 30));
+            item.Add(new Item("레드불", Item.Type.음료수, "이거슨 합법적 각성제", 1500, 3, 5, 50, 20));
+            item.Add(new Item("박카스", Item.Type.음료수, "심장이 도킹도킹!!", 2500, 5, 10, 70, 25));
+            item.Add(new Item("얼박사", Item.Type.음료수, "맛있는데 힘까지 넘쳐", 4000, 10, 20, 100, 35));
         }
-        public void ItemShop(ref List<Item>inven)
+        public void ItemShop(ref Player player)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -38,7 +39,7 @@ namespace OronaminPC
             Console.WriteLine("           소주병으로 머리 때려드릴 순 있습니다 ^^");
             Console.WriteLine($"                       <<상 점>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  허벌나게 무섭구먼 소주말고 다른거나 사야게쓰\n");
+            Console.WriteLine($"  허벌나게 무섭구먼 소주말고 다른거나 사야게쓰");
             Console.WriteLine("");
 
             for (int i = 0; i < item.Count(); i++)
@@ -64,9 +65,9 @@ namespace OronaminPC
 
             if (number == -1)
             {
-                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
+                Console.WriteLine("　안사실거면 함부로 만지지 말아주세요 (っ °Д °;)っ");
                 Thread.Sleep(1000);
-                // 상점에서 쫓아내는 막말하기
+                ItemShop(ref player);
             }
             else if (number == 0)
             {
@@ -74,13 +75,13 @@ namespace OronaminPC
             }
             else if (number == 1)
             {
-                Shopping(ref inven);
+                Shopping(ref player);
             }
 
 
         }
 
-        public void Shopping(ref List<Item>inven)
+        public void Shopping(ref Player player)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -88,10 +89,10 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("           "); // 바가지 멘트 추가
-            Console.WriteLine($"                 <<아이템 구매>>");
+            Console.WriteLine("          사는 놈이 알지 파는 놈이 알겠습니까 ^^ ");
+            Console.WriteLine($"                     <<아이템 구매>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  \n"); // 진상 멘트 추가
+            Console.WriteLine($"  아따 여기 사장 김씨 아인교? 나가 사장님이랑 으이?!");
             Console.WriteLine("");
 
             for (int i = 0; i < item.Count(); i++)
@@ -100,13 +101,14 @@ namespace OronaminPC
             }
 
             Console.WriteLine("");
-            Console.WriteLine($"  어떤 걸로 드릴까요? 숫자로 말씀해주세요");
+            Console.Write("  센터를 까보니 나온 금액 : ");
+            ConsoleUtility.PrintHighlight("", player.gold.ToString(), " G");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
-            Console.WriteLine("   と( ⌒  ∨ ⌒)つ"); // 판매 멘트 추가
+            Console.WriteLine("  분수에 맞게 골라서 숫자로 말해주세요 と( ⌒  ∨ ⌒)つ");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
@@ -117,9 +119,9 @@ namespace OronaminPC
 
             if (number == -1)
             {
-                Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
+                Console.WriteLine("　안사실거면 함부로 만지지 말아주세요 (っ °Д °;)っ");
                 Thread.Sleep(1000);
-                // 상점에서 쫓아내는 막말하기
+                Shopping(ref player);
             }
             else if (number == 0)
             {
@@ -128,8 +130,8 @@ namespace OronaminPC
             else
             {
                 item[number-1].IsPurchase = true;
-                inven.Add(item[number-1]);
-                Shopping(ref inven);
+                player.inven.Add(item[number-1]);
+                Shopping(ref player);
             }
         }
     }   
