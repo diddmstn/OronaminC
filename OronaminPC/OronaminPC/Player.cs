@@ -111,7 +111,9 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"  {name} : 아따 찹다찹다 한국이 아니고 러시아가 되부러쓰");
             Console.WriteLine("");
-            Console.WriteLine("<장비아이템>");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("  <장비아이템>");
+            Console.ResetColor();
             Console.WriteLine("");
 
             for (int i = 0; i < inven.Count(); i++)
@@ -121,7 +123,9 @@ namespace OronaminPC
             }
 
             Console.WriteLine("");
-            Console.WriteLine("<소비아이템>");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("  <소비아이템>");
+            Console.ResetColor();
             Console.WriteLine("");
 
             for (int i = 0; i < inven.Count(); i++)
@@ -375,17 +379,30 @@ namespace OronaminPC
             return Damage;
         }
 
-        public void Rest() //상원님이 꾸며주시겠지
+        public void Rest()
         {
-            //충전할것 체력, 마력
             Console.Clear();
-            Console.WriteLine("휴식");
-            Console.WriteLine($"500G 를 사용하여 체력과 마력을 회복할 수 있습니다. (보유 골드 : {gold} G)\n");
-            Console.WriteLine("1. 휴식하기");
-            Console.WriteLine("0. 나가기");
-
-            Console.Write("\n　>>");
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("                   <<휴식 하기>>");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.WriteLine("  500G 를 사용하여 체력과 마력을 회복할 수 있습니다.\n");
+            Console.WriteLine($"  (보유 골드 : {gold} G)\n");
+            Console.WriteLine("  1. 시원하게 노폐물 배출");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
+            Console.WriteLine("  >>");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
             string userInput = Console.ReadLine();
             int number= ConsoleUtility.InputCheck(userInput, 1);
 
@@ -393,20 +410,84 @@ namespace OronaminPC
             {
                 if(gold<500)
                 {
-                    Console.WriteLine("금액이 모자릅니다.");
+                    Console.WriteLine("  금액이 모자릅니다.");
                     Thread.Sleep(1000);
                     Rest();
                 }
                 else
                 {
-                    Console.WriteLine("휴식을 완료하였습니다.");
-                    Console.WriteLine($"체력: {health} -> {health + 20}"); //회복량 임의로 설정 
-                    Console.WriteLine($"마력: {manaPoint} -> {manaPoint + 20}"); //회복량 임의로 설정 
-                    Console.WriteLine($"남은 골드: {gold} -> {gold - 200}"); //회복량 임의로 설정 
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.ForegroundColor= ConsoleColor.DarkRed;
+                    Console.WriteLine("　　　　　　　♥♥♥♥　　　　　　♥♥♥♥");
+                    Console.WriteLine("　　　　　♥♥♥♥♥♥♥　　　　♥♥♥♥♥♥♥");
+                    Console.WriteLine("　　　　♥♥♥♥♥♥♥♥♥　 ♥♥♥♥♥♥♥♥♥♥");
+                    Console.WriteLine("　　　♥♥♥♥　　　　　　♥♥　　　　　　♥♥♥♥");
+                    Console.WriteLine("　　 ♥♥♥♥　　　　　　　♥　　　　　　　　♥♥♥");
+                    Console.Write("　　♥♥♥　　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■　　　　　　　　　■　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.Write("　 ♥♥♥　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■■■■　　　　　　■　■　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.Write(" 　♥♥♥　　　　　　　　　　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■　　■　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.Write("　 ♥♥♥　　　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("●　　　　　　　　　　　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.WriteLine("　　♥♥♥　　　　　　　　　　　　　　　　　　♥♥♥");
+                    Console.Write("　　 ♥♥♥♥　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■■■■■　　■■■■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥♥");
+                    Console.Write("　　　 ♥♥♥　　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■　■　　　　　　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.Write("　　　　 ♥♥♥　　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■　■　　　　■　　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.Write("　　　　　　♥♥♥　　");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("■　■　　　■　");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("♥♥♥");
+                    Console.WriteLine("　　　　　　　 ♥♥　　　　　　　　　♥♥");
+                    Console.WriteLine("　　　　　　　　 ♥♥　　　　　　　♥♥");
+                    Console.WriteLine("　　　　　　　　　 ♥♥　　　　　♥♥");
+                    Console.WriteLine("　　　　　　　　　　　♥♥　　♥♥");
+                    Console.WriteLine("　　　　　　　　　　　　♥　　♥");
+                    Console.WriteLine("　　　　　　　　　　　　　♥♥");
+                    Console.WriteLine("　　　　　　　　　　　　　 ♥");
+                    Console.ResetColor();
+                    Console.WriteLine("");
+
+                    Console.WriteLine($"　　　　　　　　　　　체력: {health} -> {health + 20}"); //회복량 임의로 설정 
+                    Console.WriteLine($"　　　　　　　　　　　마력: {manaPoint} -> {manaPoint + 20}"); //회복량 임의로 설정 
+                    Console.WriteLine($"　　　　　　　　 남은 골드: {gold} -> {gold - 500}"); //회복량 임의로 설정 
                     health += 20;
                     manaPoint += 20;
                     gold -= 500;
-                    Thread.Sleep(1000);
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+                    Thread.Sleep(3600);
                 }
             }
             else if(number==0)

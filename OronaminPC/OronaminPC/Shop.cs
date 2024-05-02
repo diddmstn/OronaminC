@@ -45,14 +45,14 @@ namespace OronaminPC
             Console.WriteLine($"  {player.name} : 허벌나게 무섭구먼 소주말고 다른거나 사야게쓰");
             Console.WriteLine("");
 
-            //for (int i = 0; i < equipment.Count(); i++)
-            //{
-            //    equipment[i].PrintItemShop(equipment[i].name, true, i + 1);
-            //}
-            //for (int i = 0; i < potion.Count(); i++)
-            //{
-            //    potion[i].PrintItemShop(potion[i].name, true, i + 1);
-            //}
+            for (int i = 0; i < equipment.Count(); i++)
+            {
+                equipment[i].PrintItemShop(equipment[i].name, true, i + 1);
+            }
+            for (int i = 0; i < potion.Count(); i++)
+            {
+                potion[i].PrintItemShop(potion[i].name, true, i + 1);
+            }
 
             Console.WriteLine("");
             Console.WriteLine("  1. 알바야 여기 장비도 파냐 (장비아이템 구매)");

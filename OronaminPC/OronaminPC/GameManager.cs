@@ -57,10 +57,10 @@ namespace OronaminPC
                         shop.ItemShop(ref player);
                         break;
                     case 4:
-                        dungeon.EnterDungeon(ref player);
+                        player.Rest();
                         break;
                     case 5:
-                        player.Rest();
+                        dungeon.EnterDungeon(ref player);
                         break;
                     default:
                         Console.WriteLine("  손님~ 주문은 똑바로 하셔야죠~");
