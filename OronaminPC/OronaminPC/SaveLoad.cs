@@ -22,12 +22,12 @@ namespace OronaminPC
 
         public void Save(Player player, int dungeonLevel, Shop shop)
         {
-            string Invenjson = JsonConvert.SerializeObject(player.inven);
-            string shopJson = JsonConvert.SerializeObject(shop.equipment);
+            string invenJson = JsonConvert.SerializeObject(player.inven);
+            string shopEquipJson = JsonConvert.SerializeObject(shop.equipment);
 
             JObject Save = new JObject();
-            JArray playerInven = JArray.Parse(Invenjson);
-            JArray shopItem = JArray.Parse(shopJson);
+            JArray playerInven = JArray.Parse(invenJson);
+            JArray equipItem = JArray.Parse(shopEquipJson);
 
             Save.Add("playerName", player.name);
             Save.Add("playerJob", player.job);
@@ -44,7 +44,7 @@ namespace OronaminPC
             Save.Add("playerGold", player.gold);
             Save.Add("dungeonLevel", dungeonLevel);
             Save.Add("playerInven", playerInven);
-            Save.Add("shopItem", shopItem);
+            Save.Add("shopEquipItem", equipItem);
 
             File.WriteAllText(filePath, Save.ToString());//Save 폴더 안에 json 파일 만들기
 
@@ -62,22 +62,22 @@ namespace OronaminPC
         public void Load(Player player, JObject jobject, Dungeon dungeon, Shop shop)
         {
             JToken invenJToken = jobject["playerInven"]; //인벤토리에서
-            JToken shopJToken = jobject["shopItem"]; //인벤토리에서
+            JToken equipItemJToken = jobject["shopEquipItem"]; //인벤토리에서
             player.inven.Clear();
             shop.equipment.Clear();
 
             foreach (JToken data in invenJToken)
             {
                 Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
-                player.inven.Clear();
                 player.inven.Add(item);
             }
 
-            foreach (JToken data in shopJToken)
+            foreach (JToken data in equipItemJToken)
             {
                 Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
                 shop.equipment.Add(item);
             }
+           
 
             player.attackBonus = (int)jobject["playerAttackBouns"];
             player.defenseBonus = (int)jobject["playerDefenseBonus"];
@@ -89,6 +89,7 @@ namespace OronaminPC
             player.exp = (int)jobject["playerExp"];
             player.attack = (int)jobject["playerAttack"] + player.attackBonus;
             player.defense = (int)jobject["playerDefense"] + player.defenseBonus;
+            player.manaPoint = (int)jobject["playerManaPoint"] + player.manaPointBonus;
             player.health = (int)jobject["playerHealth"];
             player.gold = (int)jobject["playerGold"];
             dungeon.dungeonLevel = (int)jobject["dungeonLevel"];

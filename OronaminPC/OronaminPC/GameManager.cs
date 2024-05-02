@@ -57,6 +57,9 @@ namespace OronaminPC
                         shop.ItemShop(ref player);
                         break;
                     case 4:
+                        player.Rest();
+                        break;
+                    case 5:
                         dungeon.EnterDungeon(ref player);
                         break;
                     default:
