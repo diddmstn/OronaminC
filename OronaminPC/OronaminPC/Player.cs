@@ -298,13 +298,13 @@ namespace OronaminPC
             {
                 case "단골학생":
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"{this.name}의 키보드 샷건!!");
+                    Console.WriteLine($"  {this.name}의 키보드 샷건!!");
                     Console.ResetColor();
                     damage = this.attack * 3;
                     return damage;
                 case "게임폐인":
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"{this.name}의 채팅 러시!!");
+                    Console.WriteLine($"  {this.name}의 채팅 러시!!");
                     Console.ResetColor();
                     int script = new Random().Next(1, 4);
                     if(script == 1)
@@ -329,12 +329,12 @@ namespace OronaminPC
                     return damage;
                 case "스트리머":
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"{this.name}의 후원 리액션!!");
+                    Console.WriteLine($"  {this.name}의 후원 리액션!!");
                     Console.ResetColor();
                     damage = this.attack * 2;
                     return damage;
                 default:
-                    Console.WriteLine("직업 설정 에러");
+                    Console.WriteLine("  직업 설정 에러");
                     return damage;
             }
         }
@@ -387,12 +387,15 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("                   <<휴식 하기>>");
+            Console.WriteLine("            나가시는 문은 오른편에 있습니다 ^^");
+            Console.WriteLine("                     <<휴식 하기>>");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
-            Console.WriteLine("  500G 를 사용하여 체력과 마력을 회복할 수 있습니다.\n");
+            Console.WriteLine($"  {name} : 놀랍게도 눈알이 달려가 나도 보인당께");
+            Console.WriteLine("");
+            Console.WriteLine("  (500G 를 사용하여 체력과 마력을 회복할 수 있습니다)\n");
             Console.WriteLine($"  (보유 골드 : {gold} G)\n");
-            Console.WriteLine("  1. 시원하게 노폐물 배출");
+            Console.WriteLine("  1. 시원하게 바람 한 번 쐬고 와야겠구만");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");

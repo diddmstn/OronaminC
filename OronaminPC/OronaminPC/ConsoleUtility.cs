@@ -41,7 +41,7 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("  3. 알바야 쇠주는 안파나? (상점)");
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine("  4. 워메 자리에 지려버리겄소 화장실이 어딘교? (휴식 하기)");
+        Console.WriteLine("  4. 워메 답답허이 바람 좀 쐬고 와야쓰겄소 (휴식 하기)");
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine("  5. 아따 매버라 라면으로 사람 잡겄소 (던전 입장)");
         Console.WriteLine("");

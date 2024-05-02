@@ -100,7 +100,7 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("          사는 놈이 알지 파는 놈이 알겠습니까 ^^ ");
+            Console.WriteLine("           사는 놈이 알지 파는 놈이 알겠습니까 ^^ ");
             Console.WriteLine("                     <<아이템 구매>>");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
@@ -145,7 +145,7 @@ namespace OronaminPC
                 {
                     if (equipment[number - 1].IsPurchase == true) 
                     {
-                        Console.WriteLine("  같은 장비는 재고가 1개씩 밖에 없었어요!"); 
+                        Console.WriteLine("  그거 아까 사셨잖아요 1인당 1개까지에요 내려놓으세요!"); 
                         Thread.Sleep(1000);
                         Shopequip(ref player);
                     }
