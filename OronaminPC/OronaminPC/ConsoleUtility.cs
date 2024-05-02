@@ -533,13 +533,14 @@ public class ConsoleUtility
         Console.WriteLine("  [내 정보]");
         Console.WriteLine($"  Lv.{player.level} {player.name} ({player.job})");
         Console.WriteLine($"  HP {player.health}/{pHpStart}");
+        Console.WriteLine($"  MP {player.manaPoint}/50");
         Console.WriteLine();
     }
 
     public string Action()
     {
         Console.WriteLine("  1. 공격");
-        Console.WriteLine("  2. 스킬 사용");
+        Console.WriteLine("  2. 스킬 사용 (필요 마나 : 10)");
         Console.WriteLine();
         Console.WriteLine("  사람이라면 응당 골라야 할 것을 골라보자!");
         Console.Write("  >> ");

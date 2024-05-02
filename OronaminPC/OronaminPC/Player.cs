@@ -276,16 +276,29 @@ namespace OronaminPC
             switch (this.job)
             {
                 case "단골학생":
-                    Console.WriteLine("키보드 샷건");
+                    Console.WriteLine($"{this.name}의 키보드 샷건!!");
                     damage = this.attack * 3;
                     return damage;
                 case "게임폐인":
-                    Console.WriteLine("채팅 러쉬");
-                    damage = this.attack * 3;
+                    Console.WriteLine($"{this.name}의 채팅 러시!!");
+                    int script = new Random().Next(1, 4);
+                    if(script == 1)
+                    {
+                        Console.WriteLine("게임 더럽게 못하네!!");
+                    }
+                    if (script == 2)
+                    {
+                        Console.WriteLine("손가락이 세 개 뿐이야??");
+                    }
+                    if (script == 3)
+                    {
+                        Console.WriteLine("진짜 못한다 ㅋㅋㅋㅋ");
+                    }
+                    damage = (int)Math.Ceiling(this.attack * 1.5);
                     return damage;
                 case "스트리머":
-                    Console.WriteLine("후원 리액션");
-                    damage = this.attack * 3;
+                    Console.WriteLine($"{this.name}의 후원 리액션!!");
+                    damage = this.attack * 2;
                     return damage;
                 default:
                     Console.WriteLine("직업 설정 에러");

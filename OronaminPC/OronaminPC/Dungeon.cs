@@ -143,7 +143,15 @@ namespace OronaminPC
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("                         B A T T L E");
                             Console.ForegroundColor = ConsoleColor.White;
-                            SkillAttack(ref player, monsters);
+                            if (player.manaPoint >= 10)
+                            {
+                                player.manaPoint -= 10;
+                                SkillAttack(ref player, monsters, pHpStart);
+                            }
+                            else
+                            {
+                                Console.WriteLine("  스킬 사용에 필요한 마나가 부족하여 공격 타이밍을 놓쳤습니다...");
+                            }
                             NextTurn(ref turn);
                             break;
                         default:
@@ -205,6 +213,7 @@ namespace OronaminPC
             if (game >= 1)
             {
                 cu.Defeat();
+                player.manaPoint += 10;
             }
             else if(game == -1) 
             {
@@ -216,19 +225,45 @@ namespace OronaminPC
             }
         }
 
-        public void SkillAttack(ref Player player, Monster[] monsters)
+        public void SkillAttack(ref Player player, Monster[] monsters, int pHpStart)
         {
             int damage;
-            for(int index = 0; index < monsters.Length; index++)
+            ConsoleUtility cu = new ConsoleUtility();
+            if (player.job == "단골학생")
             {
-                if (monsters[index].IsDead == false)
+                for (int index = 0; index < monsters.Length; index++)
+                {
+                    if (monsters[index].IsDead == false)
+                    {
+                        Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
+                        damage = player.Skill();
+                        bool crit = player.IsCritical();
+                        if (crit == true)
+                        {
+                            damage = damage * 2;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(" 크리티컬!!");
+                        }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine($" [데미지 : {damage}]");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        PlrAttack(monsters[index], damage, ref player);
+                    }
+                }
+            }
+            else if (player.job == "게임폐인")
+            {
+                int index = cu.SelectMonster(player, monsters) - 1;
+                int attChance = new Random().Next(1, 6);
+                Console.WriteLine($" {attChance}번 공격!!");
+                for(int i = 0; i < attChance; i++)
                 {
                     Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
                     damage = player.Skill();
                     bool crit = player.IsCritical();
                     if (crit == true)
                     {
-                        damage = damage * 2;
+                        damage = damage * 3;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" 크리티컬!!");
                     }
@@ -237,7 +272,41 @@ namespace OronaminPC
                     Console.ForegroundColor = ConsoleColor.White;
                     PlrAttack(monsters[index], damage, ref player);
                 }
-            } 
+            }
+            else if (player.job == "스트리머")
+            {
+                int attempt = 0;
+                for (int index = 0; index < monsters.Length; index++)
+                {
+                    if (monsters[index].IsDead == false)
+                    {
+                        attempt++;
+                        Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
+                        damage = player.Skill();
+                        bool crit = player.IsCritical();
+                        if (crit == true)
+                        {
+                            damage = damage * 2;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(" 크리티컬!!");
+                        }
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine($" [데미지 : {damage}]");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        PlrAttack(monsters[index], damage, ref player);
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine($"후원을 받아 기분이 좋아진 당신!!\n 체력을 {attempt * 5}만큼 흡수합니다.");
+                if ((player.health + (attempt * 5)) <= pHpStart)
+                {
+                    player.health += (attempt * 5);
+                }
+                else
+                {
+                    player.health = pHpStart;
+                }
+            }
         }
 
         public void NextTurn(ref int turn)
