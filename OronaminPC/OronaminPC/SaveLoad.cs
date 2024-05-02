@@ -57,19 +57,20 @@ namespace OronaminPC
         {
             JToken invenJToken = jobject["playerInven"]; //인벤토리에서
             JToken shopJToken = jobject["shopItem"]; //인벤토리에서
-                                                     // JToken jToken = jobject["playerInven"];
+            player.inven.Clear();
+            shop.item.Clear();
+
             foreach (JToken data in invenJToken)
             {
                 Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
+                player.inven.Clear();
                 player.inven.Add(item);
-                Console.WriteLine(player.inven.Count());
             }
 
             foreach (JToken data in shopJToken)
             {
                 Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
                 shop.item.Add(item);
-                Console.WriteLine(player.inven.Count());
             }
 
             player.level = (int)jobject["playerLevel"];

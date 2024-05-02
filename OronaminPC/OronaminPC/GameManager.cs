@@ -25,6 +25,7 @@ namespace OronaminPC
                 if (player.name == jobject["playerName"].ToString())
                 {
                     saveLoad.Load(player, jobject, dungeon, shop);
+                   //return;
                 }
             };
             while (true)
