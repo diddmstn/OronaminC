@@ -9,6 +9,7 @@ namespace OronaminPC
         static void Main(string[] args)
         {
             GameManager.Init();
+
         }
     }
 }
