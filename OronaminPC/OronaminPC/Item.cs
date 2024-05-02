@@ -109,7 +109,7 @@ namespace OronaminPC
             Console.Write(ConsoleUtility.PadRightForMixedText(description, 16));
             Console.Write(" | ");
 
-            if (IsPurchase)
+            if (IsPurchase && type != Type.음료수)
             {
                 Console.WriteLine("구매완료");
             }

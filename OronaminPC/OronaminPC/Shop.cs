@@ -47,11 +47,11 @@ namespace OronaminPC
 
             for (int i = 0; i < equipment.Count(); i++)
             {
-                equipment[i].PrintItemShop(equipment[i].name, true, i + 1);
+                equipment[i].PrintItemShop(equipment[i].name, false, i + 1);
             }
             for (int i = 0; i < potion.Count(); i++)
             {
-                potion[i].PrintItemShop(potion[i].name, true, i + 1);
+                potion[i].PrintItemShop(potion[i].name, false, i + 1);
             }
 
             Console.WriteLine("");
