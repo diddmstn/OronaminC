@@ -96,6 +96,26 @@ namespace OronaminPC
             isEquip = !isEquip;
         }
 
+        public void UsePotion(List<Item> inventory)
+        {
+            List<Item> potions = new List<Item>(); // 소비 아이템만 들어갈 리스트
+            foreach (Item item in inventory)
+            {
+                if (item.type.ToString() == "음료수")
+                {
+                    potions.Add(item);
+                }
+            }
+            foreach (Item item in potions)
+            {
+                PrintItemInventory(item.name, true);
+            }
+
+            Console.WriteLine("뭐 마실래?");
+            string userInput = Console.ReadLine();
+            int index = ConsoleUtility.InputCheck(userInput, potions.Count) - 1;
+        }
+
         public void PrintItemShop(string itemname, bool withNumber = false, int idx = 0)
         {
             Console.Write("  - ");
