@@ -39,7 +39,10 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("RPG 게임");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"이나 한판 해야겠구만 (현재 진행 : {Dungeonlevel}층)");
+            Console.Write("이나 한판 해야겠구만 ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"(현재 진행 : {Dungeonlevel}층)");
+            Console.ResetColor();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -114,7 +117,8 @@ namespace OronaminPC
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("                         B A T T L E");
                             Console.ForegroundColor = ConsoleColor.White;
-                            if(index == -2)
+                            Console.WriteLine("");
+                            if (index == -2)
                             {
                                 Console.WriteLine("  다시.");
                                 break;
@@ -126,10 +130,10 @@ namespace OronaminPC
                             {
                                 damage = damage * 2;
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write(" 크리티컬!!");
+                                Console.Write("  크리티컬!!");
                             }
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            Console.WriteLine($" [데미지 : {damage}]");
+                            Console.WriteLine($"  [데미지 : {damage}]");
                             Console.ForegroundColor = ConsoleColor.White;
                             PlrAttack(monsters[index], damage, ref player);
                             NextTurn(ref turn);
@@ -143,6 +147,7 @@ namespace OronaminPC
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("                         B A T T L E");
                             Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("");
                             if (player.manaPoint >= 10)
                             {
                                 player.manaPoint -= 10;
@@ -170,6 +175,7 @@ namespace OronaminPC
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("                         B A T T L E");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
                     int vic = 0;
                     for (int i = 0; i < monsters.Length; i++)
                     {
@@ -180,14 +186,14 @@ namespace OronaminPC
                             if (dodge == true)
                             {
                                 Console.ForegroundColor = ConsoleColor.Blue;
-                                Console.WriteLine(" 회피 성공!!");
+                                Console.WriteLine("  회피 성공!!");
                                 Console.ForegroundColor = ConsoleColor.White;
                             }
                             else
                             {
                                 Console.Write($"  {player.name} 을(를) 맞췄습니다. ");
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine($" [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
+                                Console.WriteLine($"  [데미지 : {monsters[i].atk - Math.Ceiling(monsters[i].atk * (player.defense * 0.01))}]");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 player.health -= monsters[i].atk - (int)(Math.Ceiling(monsters[i].atk * (player.defense * 0.01))); // 체력이 0 이하로 떨어지면 0으로 고정
                             }
@@ -242,10 +248,10 @@ namespace OronaminPC
                         {
                             damage = damage * 2;
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(" 크리티컬!!");
+                            Console.Write("  크리티컬!!");
                         }
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine($" [데미지 : {damage}]");
+                        Console.WriteLine($"  [데미지 : {damage}]");
                         Console.ForegroundColor = ConsoleColor.White;
                         PlrAttack(monsters[index], damage, ref player);
                     }
@@ -255,8 +261,10 @@ namespace OronaminPC
             {
                 int index = cu.SelectMonster(player, monsters) - 1;
                 int attChance = new Random().Next(1, 6);
-                Console.WriteLine($" {attChance}번 공격!!");
-                for(int i = 0; i < attChance; i++)
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"  {attChance}번 공격!!");
+                Console.ResetColor();
+                for (int i = 0; i < attChance; i++)
                 {
                     Console.Write($"  Lv.{monsters[index].level} {monsters[index].name} 을(를) 맞췄습니다. ");
                     damage = player.Skill();
@@ -265,10 +273,10 @@ namespace OronaminPC
                     {
                         damage = damage * 3;
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" 크리티컬!!");
+                        Console.Write("  크리티컬!!");
                     }
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine($" [데미지 : {damage}]");
+                    Console.WriteLine($"  [데미지 : {damage}]");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlrAttack(monsters[index], damage, ref player);
                 }
@@ -288,10 +296,10 @@ namespace OronaminPC
                         {
                             damage = damage * 2;
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(" 크리티컬!!");
+                            Console.Write("  크리티컬!!");
                         }
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine($" [데미지 : {damage}]");
+                        Console.WriteLine($"  [데미지 : {damage}]");
                         Console.ForegroundColor = ConsoleColor.White;
                         PlrAttack(monsters[index], damage, ref player);
                     }

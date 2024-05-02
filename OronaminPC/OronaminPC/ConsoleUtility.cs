@@ -523,6 +523,7 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine("                         B A T T L E");
         Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("");
         for (int i = 0; i < monster.Length; i++)
         {
             //Console.WriteLine($"  {i + 1}. Lv.{monster[i].level} {monster[i].name} HP {monster[i].hp}");
@@ -530,11 +531,14 @@ public class ConsoleUtility
             Console.ResetColor();
         }
         Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("  [내 정보]");
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"  Lv.{player.level} {player.name} ({player.job})");
         Console.WriteLine($"  HP {player.health}/{pHpStart}");
         Console.WriteLine($"  MP {player.manaPoint}/50");
-        Console.WriteLine();
+        Console.ResetColor();
+        Console.WriteLine("");
     }
 
     public string Action()
@@ -593,8 +597,11 @@ public class ConsoleUtility
         // 상원님 꾸며주세요
         //Console.WriteLine("\n                     [캐릭터 정보]");
         //Console.WriteLine($"Lv. {player.level} {player.name}"); //만약 레벨업 하면 변경상황 출력해야함
-        Console.WriteLine("\n                     [획득 아이템]");
-        Console.WriteLine($"{monsterCount*100} G");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("\n                [획 득 보 상]");
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"  골드 : {monsterCount*100} G");
         player.gold += monsterCount * 100;
         Thread.Sleep(3600);
     }

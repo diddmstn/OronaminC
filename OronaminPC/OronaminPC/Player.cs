@@ -74,9 +74,9 @@ namespace OronaminPC
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("            주문하신 아이스 커피 나왔습니다~!");
-            Console.WriteLine($"                     <<상 태 보 기>>");
+            Console.WriteLine("                     <<상 태 보 기>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  워메 카페인이 들어가니께 몸 상태가 달라져부러야\n");
+            Console.WriteLine($"  {name} : 워메 카페인이 들어가니께 몸 상태가 달라져부러야");
             Console.WriteLine($"  Lv. {level.ToString("00")}");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"  {name} ({job})");
@@ -121,9 +121,9 @@ namespace OronaminPC
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("            네 에어컨 18도로 맞춰드렸습니다~!");
-            Console.WriteLine($"                     <<인 벤 토 리>>");
+            Console.WriteLine("                     <<인 벤 토 리>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  아따 찹다찹다 한국이 아니고 러시아가 되부러쓰\n");
+            Console.WriteLine($"  {name} : 아따 찹다찹다 한국이 아니고 러시아가 되부러쓰");
             Console.WriteLine("");
 
             for (int i = 0; i < inven.Count(); i++)
@@ -131,10 +131,10 @@ namespace OronaminPC
                 inven[i].PrintItemInventory(inven[i].name, false, i + 1);
             }
             Console.WriteLine("");
-            Console.WriteLine($"  1. "); // 장착장 이동 멘트 추가
+            Console.WriteLine("  1. 알바가 갖다준 물건을 쪼매 써볼까잉");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
+            Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("");
             Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
@@ -157,10 +157,9 @@ namespace OronaminPC
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("            네 에어컨 18도로 맞춰드렸습니다~!");
-                Console.WriteLine($"                     <<인 벤 토 리>>");
+                Console.WriteLine("                   <<아 이 템 장 착>>");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"  아따 찹다찹다 한국이 아니고 러시아가 되부러쓰\n");
+                Console.WriteLine($"  {name} : 이야~ 방금 받은 물건들이 따끈따끈하구마잉");
                 Console.WriteLine("");
 
                 for (int i = 0; i < inven.Count(); i++)
@@ -168,10 +167,10 @@ namespace OronaminPC
                     inven[i].PrintItemInventory(inven[i].name, true, i + 1);
                 }
                 Console.WriteLine("");
-                Console.WriteLine($""); // 장착할 아이템 선택 멘트
+                Console.WriteLine("  1. "); // 장착할 아이템 선택 멘트
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine($"  0. 워메 한대 피고와야 쓰겄네  (나가기)");
+                Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("");
                 Console.WriteLine("  무엇을 도와드릴까요 손님? と( ⌒  ∨ ⌒)つ");
@@ -276,28 +275,40 @@ namespace OronaminPC
             switch (this.job)
             {
                 case "단골학생":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"{this.name}의 키보드 샷건!!");
+                    Console.ResetColor();
                     damage = this.attack * 3;
                     return damage;
                 case "게임폐인":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"{this.name}의 채팅 러시!!");
+                    Console.ResetColor();
                     int script = new Random().Next(1, 4);
                     if(script == 1)
                     {
-                        Console.WriteLine("게임 더럽게 못하네!!");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"  {name} : 게임 더럽게 못하네!!");
+                        Console.ResetColor();
                     }
                     if (script == 2)
                     {
-                        Console.WriteLine("손가락이 세 개 뿐이야??");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"  {name} : 손가락이 세 개 뿐이야??");
+                        Console.ResetColor();
                     }
                     if (script == 3)
                     {
-                        Console.WriteLine("진짜 못한다 ㅋㅋㅋㅋ");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"  {name} : 진짜 못한다 ㅋㅋㅋㅋ");
+                        Console.ResetColor();
                     }
                     damage = (int)Math.Ceiling(this.attack * 1.5);
                     return damage;
                 case "스트리머":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"{this.name}의 후원 리액션!!");
+                    Console.ResetColor();
                     damage = this.attack * 2;
                     return damage;
                 default:
