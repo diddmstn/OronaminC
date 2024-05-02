@@ -444,9 +444,7 @@ public class ConsoleUtility
         strings[0] = name;
 		strings[1] = SelectJob();
 		return strings;
-
 	}
-
     public string SelectJob()
     {
         Console.Clear();
@@ -594,7 +592,6 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("　 ㅣ");
         Console.WriteLine("┗ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ┛");
-        // 상원님 꾸며주세요
         //Console.WriteLine("\n                     [캐릭터 정보]");
         //Console.WriteLine($"Lv. {player.level} {player.name}"); //만약 레벨업 하면 변경상황 출력해야함
         Console.ForegroundColor = ConsoleColor.DarkYellow;

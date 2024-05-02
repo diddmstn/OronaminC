@@ -39,7 +39,8 @@ namespace OronaminPC
             Console.WriteLine("           소주병으로 머리 때려드릴 순 있습니다 ^^");
             Console.WriteLine($"                       <<상 점>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  허벌나게 무섭구먼 소주말고 다른거나 사야게쓰");
+            Console.WriteLine("");
+            Console.WriteLine($"  {player.name} : 허벌나게 무섭구먼 소주말고 다른거나 사야게쓰");
             Console.WriteLine("");
 
             for (int i = 0; i < item.Count(); i++)
@@ -90,7 +91,8 @@ namespace OronaminPC
             Console.WriteLine("          사는 놈이 알지 파는 놈이 알겠습니까 ^^ ");
             Console.WriteLine($"                     <<아이템 구매>>");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  아따 여기 사장 김씨 아인교? 나가 사장님이랑 으이?!");
+            Console.WriteLine("");
+            Console.WriteLine($"  {player.name} : 아따 여기 사장 김씨 아인교? 나가 사장님이랑 으이?!");
             Console.WriteLine("");
 
             for (int i = 0; i < item.Count(); i++)

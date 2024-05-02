@@ -167,7 +167,7 @@ namespace OronaminPC
                     inven[i].PrintItemInventory(inven[i].name, true, i + 1);
                 }
                 Console.WriteLine("");
-                Console.WriteLine("  1. "); // 장착할 아이템 선택 멘트
+                Console.WriteLine("  허메 뭘 써야 좋은 걸 썼다고 소문이 날랑가... 번호로 눌러보자"); // 장착할 아이템 선택 멘트
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
