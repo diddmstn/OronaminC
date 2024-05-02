@@ -111,11 +111,25 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"  {name} : 아따 찹다찹다 한국이 아니고 러시아가 되부러쓰");
             Console.WriteLine("");
+            Console.WriteLine("<장비아이템>");
+            Console.WriteLine("");
 
             for (int i = 0; i < inven.Count(); i++)
             {
+                if (inven[i].type.ToString() != "음료수")
                 inven[i].PrintItemInventory(inven[i].name, false, i + 1);
             }
+
+            Console.WriteLine("");
+            Console.WriteLine("<소비아이템>");
+            Console.WriteLine("");
+
+            for (int i = 0; i < inven.Count(); i++)
+            {
+                if (inven[i].type.ToString() == "음료수")
+                inven[i].PrintItemInventory(inven[i].name, false, i + 1);
+            }
+
             Console.WriteLine("");
             Console.WriteLine("  1. 알바가 갖다준 물건을 쪼매 써볼까잉");
             Console.WriteLine("");
@@ -147,13 +161,19 @@ namespace OronaminPC
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"  {name} : 이야~ 방금 받은 물건들이 따끈따끈하구마잉");
                 Console.WriteLine("");
+                int equipItemCount = 0;
+
 
                 for (int i = 0; i < inven.Count(); i++)
                 {
-                    inven[i].PrintItemInventory(inven[i].name, true, i + 1);
+                    if (inven[i].type.ToString() != "음료수")
+                    {
+                        inven[i].PrintItemInventory(inven[i].name, true, i + 1);
+                        equipItemCount++;
+                    }
                 }
                 Console.WriteLine("");
-                Console.WriteLine("  허메 뭘 써야 좋은 걸 썼다고 소문이 날랑가... 번호로 눌러보자"); // 장착할 아이템 선택 멘트
+                Console.WriteLine("  허메 뭘 써야 좋은 걸 썼다고 소문이 날랑가... 번호로 눌러보자");
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -166,8 +186,20 @@ namespace OronaminPC
                 Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
                 Console.ForegroundColor = ConsoleColor.White;
                 string userInput2 = Console.ReadLine();
-                int number2 = ConsoleUtility.InputCheck(userInput2, 14);
-                ItemEquip(inven[number2 - 1]);
+                int number2 = ConsoleUtility.InputCheck(userInput2, equipItemCount);
+                if (number2 == -1)
+                {
+                    Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
+                    Thread.Sleep(1000);
+                }
+                else if (number2 == 0)
+                {
+                
+                }
+                else
+                {
+                    ItemEquip(inven[number2 - 1]);
+                }
                 Inventory();
             }
             else

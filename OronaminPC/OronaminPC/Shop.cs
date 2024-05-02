@@ -225,7 +225,7 @@ namespace OronaminPC
                 if (number >= 1 && number <= 5 && player.gold >= potion[number - 1].price)
                 {
                     potion[number - 1].IsPurchase = true;
-                    player.inven.Add(equipment[number - 1]);
+                    player.inven.Add(potion[number - 1]);
                     Console.WriteLine("  주문하신 물건은 자리에 가져다 드릴게요");
                     Thread.Sleep(1000);
                     player.gold -= potion[number - 1].price;
