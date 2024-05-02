@@ -1,10 +1,20 @@
-﻿namespace OronaminPC
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+
+namespace OronaminPC
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            GameManager.Init();
+
         }
     }
 }
+
+
+
+
+
