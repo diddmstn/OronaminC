@@ -118,7 +118,7 @@ namespace OronaminPC
                             Console.WriteLine("                         B A T T L E");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("");
-                            if (index == -2)
+                            if (index <= -1)
                             {
                                 Console.WriteLine("  다시.");
                                 break;
