@@ -35,7 +35,7 @@
 
 |게임 타이틀|직업 선택|
 |:------:|:------:|
-|![title](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/1_title.PNG?raw=true)|![job](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/2_job.PNG?raw=true)|
+|![title](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/1_title.PNG?raw=true)|![job](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/2_job.PNG?raw=true)|
 |플레이어 네임 작성|플레이어 직업 선택|
 
 |메인 메뉴|상태 보기|
