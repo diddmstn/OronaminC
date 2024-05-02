@@ -561,7 +561,7 @@ public class ConsoleUtility
 		
 	}
 
-    public void Victory()
+    public void Victory(ref Player player,int monsterCount,int exp)
     {
         Console.Clear();
         Console.WriteLine("┏ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ┓");
@@ -589,6 +589,12 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("　 ㅣ");
         Console.WriteLine("┗ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ┛");
+        // 상원님 꾸며주세요
+        //Console.WriteLine("\n                     [캐릭터 정보]");
+        //Console.WriteLine($"Lv. {player.level} {player.name}"); //만약 레벨업 하면 변경상황 출력해야함
+        Console.WriteLine("\n                     [획득 아이템]");
+        Console.WriteLine($"{monsterCount*100} G");
+        player.gold += monsterCount * 100;
         Thread.Sleep(3600);
     }
     public void Defeat()
