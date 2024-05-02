@@ -77,8 +77,6 @@ namespace OronaminPC
             {
                 Shopping(ref player);
             }
-
-
         }
 
         public void Shopping(ref Player player)
@@ -129,9 +127,36 @@ namespace OronaminPC
             }
             else
             {
-                item[number-1].IsPurchase = true;
-                player.inven.Add(item[number-1]);
-                Shopping(ref player);
+                if (number >= 1 && number <= 14 && player.gold >= item[number - 1].price)
+                {
+                    if (item[number - 1].IsPurchase == true && item[number - 1].type.ToString() != "음료수") //킹갓제너럴엠퍼럴슈퍼마제스티충무공갓성훈!!! 개멋있어 남자가 봐도 반하겠어
+                    {
+                        Console.WriteLine("  같은 장비는 재고가 1개씩 밖에 없었어요!"); 
+                        Thread.Sleep(1000);
+                        Shopping(ref player);
+                    }
+                    else
+                    {
+                        item[number - 1].IsPurchase = true;
+                        player.inven.Add(item[number - 1]);
+                        Console.WriteLine("  주문하신 물건은 자리에 가져다 드릴게요");
+                        Thread.Sleep(1000);
+                        player.gold -= item[number - 1].price;
+                        Shopping(ref player);
+                    }
+                }
+                else if (number >= 1 && number <= 14 && player.gold < item[number - 1].price)
+                {
+                    item[number - 1].IsPurchase = false;
+                    Console.WriteLine("  돈 없으시면 가서 게임이나 하세요 ^^");
+                    Thread.Sleep(1000);
+                    Shopping(ref player);
+                }
+                else
+                {
+                    return;
+                }
+                
             }
         }
     }   
