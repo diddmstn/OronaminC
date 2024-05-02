@@ -59,6 +59,9 @@ namespace OronaminPC
                     case 4:
                         dungeon.EnterDungeon(ref player);
                         break;
+                    case 5:
+                        player.Rest();
+                        break;
                     default:
                         Console.WriteLine("  손님~ 주문은 똑바로 하셔야죠~");
                         Thread.Sleep(1000);

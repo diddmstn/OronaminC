@@ -374,5 +374,52 @@ namespace OronaminPC
 
             return Damage;
         }
+
+        public void Rest() //상원님이 꾸며주시겠지
+        {
+            //충전할것 체력, 마력
+            Console.Clear();
+            Console.WriteLine("휴식");
+            Console.WriteLine($"500G 를 사용하여 체력과 마력을 회복할 수 있습니다. (보유 골드 : {gold} G)\n");
+            Console.WriteLine("1. 휴식하기");
+            Console.WriteLine("0. 나가기");
+
+            Console.Write("\n　>>");
+
+            string userInput = Console.ReadLine();
+            int number= ConsoleUtility.InputCheck(userInput, 1);
+
+            if(number==1)
+            {
+                if(gold<500)
+                {
+                    Console.WriteLine("금액이 모자릅니다.");
+                    Thread.Sleep(1000);
+                    Rest();
+                }
+                else
+                {
+                    Console.WriteLine("휴식을 완료하였습니다.");
+                    Console.WriteLine($"체력: {health} -> {health + 20}"); //회복량 임의로 설정 
+                    Console.WriteLine($"마력: {manaPoint} -> {manaPoint + 20}"); //회복량 임의로 설정 
+                    Console.WriteLine($"남은 골드: {gold} -> {gold - 200}"); //회복량 임의로 설정 
+                    health += 20;
+                    manaPoint += 20;
+                    gold -= 500;
+                    Thread.Sleep(1000);
+                }
+            }
+            else if(number==0)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("올바른 입력이 아닙니다.");
+                Thread.Sleep(1000);
+                Rest();
+            }
+
+        }
     }
 }

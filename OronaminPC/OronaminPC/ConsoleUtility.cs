@@ -42,6 +42,7 @@ public class ConsoleUtility
         Console.WriteLine("  3. 알바야 쇠주는 안파나? (상점)");
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine("  4. 아따 매버라 라면으로 사람 잡겄소 (던전 입장)");
+        Console.WriteLine("  5. 휴식하기 꾸며주세요 상원님");
         Console.WriteLine("");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -55,7 +56,7 @@ public class ConsoleUtility
         Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
         Console.ForegroundColor = ConsoleColor.White;
         string userInput = Console.ReadLine();
-		int number = InputCheck(userInput, 4);
+		int number = InputCheck(userInput, 5);
 		return number;
     }
 
