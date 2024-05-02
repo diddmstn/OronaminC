@@ -96,25 +96,38 @@ namespace OronaminPC
             isEquip = !isEquip;
         }
 
-        public void UsePotion(List<Item> inventory)
-        {
-            List<Item> potions = new List<Item>(); // 소비 아이템만 들어갈 리스트
-            foreach (Item item in inventory)
-            {
-                if (item.type.ToString() == "음료수")
-                {
-                    potions.Add(item);
-                }
-            }
-            foreach (Item item in potions)
-            {
-                PrintItemInventory(item.name, true);
-            }
+        //public Item UsePotion(ref Player player)
+        //{
+        //    List<Item> potions = new List<Item>(); // 소비 아이템만 들어갈 리스트
+        //    foreach (Item item in player.inven)
+        //    {
+        //        if (item.type.ToString() == "음료수")
+        //        {
+        //            potions.Add(item);
+        //        }
+        //    }
+        //    foreach (Item item in potions)
+        //    {
+        //        PrintItemInventory(item.name, true);
+        //    }
 
-            Console.WriteLine("뭐 마실래?");
-            string userInput = Console.ReadLine();
-            int index = ConsoleUtility.InputCheck(userInput, potions.Count) - 1;
-        }
+        //    Console.WriteLine("뭐 마실래?");
+        //    string userInput = Console.ReadLine();
+        //    int index = ConsoleUtility.InputCheck(userInput, potions.Count) - 1;
+        //    if (index < 0)
+        //    {
+        //        Console.WriteLine("당신은 소중한 기회를 날리셨습니다. 목마름은 책임지지 않아요^^");
+        //        Item temp = new Item("", type, "", 0, 0, 0, 0, 0);
+        //        return temp;
+        //    }
+        //    else
+        //    {
+        //        // 먹기
+        //        player.ItemEquip(potions[index]);
+        //        potions[index].
+        //        return potions[index];
+        //    }
+        //}
 
         public void PrintItemShop(string itemname, bool withNumber = false, int idx = 0)
         {

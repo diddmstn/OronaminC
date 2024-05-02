@@ -43,6 +43,9 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"(현재 진행 : {dungeonLevel}층)");
             Console.ResetColor();
+            // 소비 아이템 사용 여부 확인(곽)
+            Console.WriteLine("  2. 물약 먹기");
+
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("  0. 워메 한대 피고와야 쓰겄네  (나가기)");
@@ -55,7 +58,7 @@ namespace OronaminPC
             Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
             Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
-            int number = ConsoleUtility.InputCheck(userInput, 1);
+            int number = ConsoleUtility.InputCheck(userInput, 2);
 
             switch (number)
             {
@@ -64,6 +67,8 @@ namespace OronaminPC
                 case 1:
                     BattleBoard(ref player);
                     break;
+                case 2:
+                    // 물약 먹기 함수
                 default:
                     Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
                     Thread.Sleep(1000);
