@@ -51,5 +51,15 @@
 |![main](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/3_main.PNG?raw=true)|![stat](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/4_stat.PNG?raw=true)|
 |원하는 메뉴 선택|플레이어 상태 확인|
 
+|인벤토리|상점|
+|:------:|:------:|
+|![inven](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/5_inven.PNG?raw=true)|![shop](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/6_shop.PNG?raw=true)|
+|플레이어 네임 작성|플레이어 직업 선택|
+
+|던전 입장|전투 장면|
+|:------:|:------:|
+|![dungeon](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/7_dungeon.PNG?raw=true)|![play](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/8_play.PNG?raw=true)|
+|플레이어 네임 작성|플레이어 직업 선택|
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer" />
 </div>
