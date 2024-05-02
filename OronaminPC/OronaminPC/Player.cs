@@ -250,8 +250,9 @@ namespace OronaminPC
             }
         }
 
-        public void LevelUpCheck()
+        public void LevelUpCheck(int getExp)
         {
+            exp += getExp;
             if (EXP[level - 1] <= exp)
             {
                 exp -= EXP[level - 1];

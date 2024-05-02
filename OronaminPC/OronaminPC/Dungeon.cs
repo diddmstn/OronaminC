@@ -131,7 +131,7 @@ namespace OronaminPC
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.WriteLine($" [데미지 : {damage}]");
                             Console.ForegroundColor = ConsoleColor.White;
-                            PlrAttack(monsters[index], damage);
+                            PlrAttack(monsters[index], damage, ref player);
                             NextTurn(ref turn);
                             break;
                         case "2":
@@ -235,7 +235,7 @@ namespace OronaminPC
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine($" [데미지 : {damage}]");
                     Console.ForegroundColor = ConsoleColor.White;
-                    PlrAttack(monsters[index], damage);
+                    PlrAttack(monsters[index], damage, ref player);
                 }
             } 
         }
@@ -271,13 +271,13 @@ namespace OronaminPC
         }
 
 
-        public void PlrAttack(Monster monsters, int damage)
+        public void PlrAttack(Monster monsters, int damage, ref Player player)
         {
             int temp = monsters.hp; // 쳐맞기전 몬스터 체력
             if (temp > 0)
             {
-                
-                getExp += monsters.TakeDamage(damage);
+                getExp = monsters.TakeDamage(damage);
+                player.LevelUpCheck(getExp);
             }
             else
             {
