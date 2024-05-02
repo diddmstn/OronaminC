@@ -32,8 +32,10 @@ namespace OronaminPC
             Save.Add("playerName", player.name);
             Save.Add("playerJob", player.job);
             Save.Add("playerLevel", player.level);
-            Save.Add("playerAttack", player.attack);
-            Save.Add("playerDefense", player.defense);
+            Save.Add("playerAttack", player.attack-player.attackBonus);
+            Save.Add("playerAttackBouns", player.attackBonus);
+            Save.Add("playerDefense", player.defense- player.defenseBonus);
+            Save.Add("playerDefenseBonus", player.defenseBonus);
             Save.Add("playerHealth", player.health);
             Save.Add("playerGold", player.gold);
             Save.Add("dungeonLevel", dungeonLevel);
@@ -73,9 +75,13 @@ namespace OronaminPC
                 shop.item.Add(item);
             }
 
+            player.attackBonus = (int)jobject["playerAttackBouns"];
+            player.defenseBonus = (int)jobject["playerDefenseBonus"];
+
+
             player.level = (int)jobject["playerLevel"];
-            player.attack = (int)jobject["playerAttack"];
-            player.defense = (int)jobject["playerDefense"];
+            player.attack = (int)jobject["playerAttack"] + player.attackBonus;
+            player.defense = (int)jobject["playerDefense"] + player.defenseBonus;
             player.health = (int)jobject["playerHealth"];
             player.gold = (int)jobject["playerGold"];
             dungeon.dungeonLevel = (int)jobject["dungeonLevel"];
