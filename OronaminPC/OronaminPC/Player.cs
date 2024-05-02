@@ -8,6 +8,8 @@ namespace OronaminPC
         public string name { get; set; }
         public string job { get; set; }
         public int level { get; set; }
+        private static int[] EXP = { 10, 35, 65, 100 };
+        public int exp {  get; set; }
         public int attack { get; set; }
         public int attackBonus { get; set; }
         public int defense { get; set; }
@@ -41,26 +43,25 @@ namespace OronaminPC
             name = _name;
             job = _job;
             level = 1;
+            manaPoint = 50;
+
             if (_job == "단골학생")
             {
                 attack = 10;
                 defense = 5;
                 health = 100;
-                manaPoint = 50;
             }
             if (_job == "게임폐인")
             {
                 attack = 15;
                 defense = 0;
                 health = 70;
-                manaPoint = 200;
             }
             if (_job == "스트리머")
             {
                 attack = 5;
                 defense = 10;
                 health = 120;
-                manaPoint = 100;
             }
             gold = 1500;
         }
@@ -249,22 +250,55 @@ namespace OronaminPC
             }
         }
 
+        public void LevelUpCheck(int getExp)
+        {
+            exp += getExp;
+            if (EXP[level - 1] <= exp)
+            {
+                exp -= EXP[level - 1];
+                level++;
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Console.WriteLine($"  레벨이 {level}로 올랐습니다!");
+            this.attack += 3;
+            Console.WriteLine($"  공격력이 3이 올랐습니다.");
+            this.defense += 3;
+            Console.WriteLine($"  방어력이 3이 올랐습니다.");
+        }
+
         public int Skill()
         {
             int damage = 0;
             switch (this.job)
             {
                 case "단골학생":
-                    Console.WriteLine("키보드 샷건");
+                    Console.WriteLine($"{this.name}의 키보드 샷건!!");
                     damage = this.attack * 3;
                     return damage;
                 case "게임폐인":
-                    Console.WriteLine("채팅 러쉬");
-                    damage = this.attack * 3;
+                    Console.WriteLine($"{this.name}의 채팅 러시!!");
+                    int script = new Random().Next(1, 4);
+                    if(script == 1)
+                    {
+                        Console.WriteLine("게임 더럽게 못하네!!");
+                    }
+                    if (script == 2)
+                    {
+                        Console.WriteLine("손가락이 세 개 뿐이야??");
+                    }
+                    if (script == 3)
+                    {
+                        Console.WriteLine("진짜 못한다 ㅋㅋㅋㅋ");
+                    }
+                    damage = (int)Math.Ceiling(this.attack * 1.5);
                     return damage;
                 case "스트리머":
-                    Console.WriteLine("후원 리액션");
-                    damage = this.attack * 3;
+                    Console.WriteLine($"{this.name}의 후원 리액션!!");
+                    damage = this.attack * 2;
                     return damage;
                 default:
                     Console.WriteLine("직업 설정 에러");
