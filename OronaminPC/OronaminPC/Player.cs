@@ -8,6 +8,8 @@ namespace OronaminPC
         public string name { get; set; }
         public string job { get; set; }
         public int level { get; set; }
+        private static int[] EXP = { 10, 35, 65, 100 };
+        public int exp {  get; set; }
         public int attack { get; set; }
         public int attackBonus { get; set; }
         public int defense { get; set; }
@@ -41,26 +43,25 @@ namespace OronaminPC
             name = _name;
             job = _job;
             level = 1;
+            manaPoint = 50;
+
             if (_job == "단골학생")
             {
                 attack = 10;
                 defense = 5;
                 health = 100;
-                manaPoint = 50;
             }
             if (_job == "게임폐인")
             {
                 attack = 15;
                 defense = 0;
                 health = 70;
-                manaPoint = 200;
             }
             if (_job == "스트리머")
             {
                 attack = 5;
                 defense = 10;
                 health = 120;
-                manaPoint = 100;
             }
             gold = 1500;
         }
@@ -247,6 +248,25 @@ namespace OronaminPC
                     this.manaPointBonus -= item.manaPoint;
                 }
             }
+        }
+
+        public void LevelUpCheck()
+        {
+            if (EXP[level - 1] <= exp)
+            {
+                exp -= EXP[level - 1];
+                level++;
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Console.WriteLine($"  레벨이 {level}로 올랐습니다!");
+            this.attack += 3;
+            Console.WriteLine($"  공격력이 3이 올랐습니다.");
+            this.defense += 3;
+            Console.WriteLine($"  방어력이 3이 올랐습니다.");
         }
 
         public int Skill()
