@@ -8,6 +8,7 @@ namespace OronaminPC
     internal class Dungeon
     {
         int Dungeonlevel = 1;
+        int getExp = 0;
         List<Monster> monster = new List<Monster>();
 
         public Dungeon()
@@ -207,8 +208,11 @@ namespace OronaminPC
             }
             else if(game == -1) 
             {
-                cu.Victory();
-                Dungeonlevel++;//던전 레벨증가
+                cu.Victory(ref player,monsters.Length, getExp);
+                if(Dungeonlevel!=6)
+                {
+                    Dungeonlevel++;//던전 레벨증가
+                }
             }
         }
 
@@ -272,7 +276,8 @@ namespace OronaminPC
             int temp = monsters.hp; // 쳐맞기전 몬스터 체력
             if (temp > 0)
             {
-                monsters.TakeDamage(damage);
+                
+                getExp += monsters.TakeDamage(damage);
             }
             else
             {
