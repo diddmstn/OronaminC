@@ -223,8 +223,9 @@ namespace OronaminPC
             }
             else if(game == -1) 
             {
-                cu.Victory(ref player,monsters.Length, getExp);
-                if(Dungeonlevel!=6)
+                cu.Victory(ref player,Dungeonlevel, getExp);
+                player.manaPoint += 10;
+                if (Dungeonlevel!=6)
                 {
                     Dungeonlevel++;//던전 레벨증가
                 }

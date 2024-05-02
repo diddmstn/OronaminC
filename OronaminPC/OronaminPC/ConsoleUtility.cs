@@ -564,7 +564,7 @@ public class ConsoleUtility
 		
 	}
 
-    public void Victory(ref Player player,int monsterCount,int exp)
+    public void Victory(ref Player player,int dungeonlevel,int exp)
     {
         Console.Clear();
         Console.WriteLine("┏ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ┓");
@@ -598,8 +598,8 @@ public class ConsoleUtility
         Console.WriteLine("\n                [획 득 보 상]");
         Console.WriteLine("");
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"  골드 : {monsterCount*100} G");
-        player.gold += monsterCount * 100;
+        Console.WriteLine($"  골드 : {dungeonlevel * 750} G");
+        player.gold += dungeonlevel * 750;
         Thread.Sleep(3600);
     }
     public void Defeat()
