@@ -10,7 +10,7 @@ namespace OronaminPC
 {
     public class Shop
     {
-        List<Item> item = new List<Item>();
+        public List<Item> item = new List<Item>();
         public Shop()
         {
             item.Add(new Item("볼 마우스", Item.Type.마우스, "샷건치면 볼 사라짐", 700, 7, 0, 0, 0));

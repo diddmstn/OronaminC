@@ -24,12 +24,12 @@ namespace OronaminPC
                 JObject jobject = SaveLoad.Read();//저장한 파일과 이름이 같은지 확인
                 if (player.name == jobject["playerName"].ToString())
                 {
-                    SaveLoad.Load(player, jobject);
+                    saveLoad.Load(player, jobject, dungeon, shop);
                 }
             };
             while (true)
             {
-                SaveLoad.Save(player);//save 
+                saveLoad.Save(player, dungeon.dungeonLevel, shop);//save 
                 int menu = cu.Menu();
                 switch (menu)
                 {

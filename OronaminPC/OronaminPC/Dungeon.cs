@@ -5,9 +5,9 @@ using System.Xml.Linq;
 
 namespace OronaminPC
 {
-    internal class Dungeon
+    public class Dungeon
     {
-        int Dungeonlevel = 1;
+        public int dungeonLevel = 1;
         int getExp = 0;
         List<Monster> monster = new List<Monster>();
 
@@ -41,7 +41,7 @@ namespace OronaminPC
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("이나 한판 해야겠구만 ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"(현재 진행 : {Dungeonlevel}층)");
+            Console.WriteLine($"(현재 진행 : {dungeonLevel}층)");
             Console.ResetColor();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -79,7 +79,7 @@ namespace OronaminPC
 
             for (int i = 0; i < monsterCount; i++)//배열에 몬스터 추가
             {
-                battleMonster[i] = monster[random.Next(Dungeonlevel - 1, Dungeonlevel + 1)].ReturnDeepCopy();
+                battleMonster[i] = monster[random.Next(dungeonLevel - 1, dungeonLevel + 1)].ReturnDeepCopy();
                 
             }
 
@@ -223,11 +223,11 @@ namespace OronaminPC
             }
             else if(game == -1) 
             {
-                cu.Victory(ref player,Dungeonlevel, getExp);
+                cu.Victory(ref player, dungeonLevel, getExp);
                 player.manaPoint += 10;
-                if (Dungeonlevel!=6)
+                if (dungeonLevel != 6)
                 {
-                    Dungeonlevel++;//던전 레벨증가
+                    dungeonLevel++;//던전 레벨증가
                 }
             }
         }

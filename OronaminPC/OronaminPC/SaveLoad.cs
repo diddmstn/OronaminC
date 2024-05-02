@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Reflection.Emit;
 
 namespace OronaminPC
@@ -19,19 +20,28 @@ namespace OronaminPC
             }
         }
 
-        static public void Save(Player player)//현재는 플레이어 스텟만 저장
+        public void Save(Player player, int dungeonLevel, Shop shop)
         {
-            JObject Save = new JObject(
-               new JProperty("playerName", player.name),
-               new JProperty("playerJob", player.job),
-               new JProperty("playerLevel", player.level),
-               new JProperty("playerAttack", player.attack),
-               new JProperty("playerDefense", player.defense),
-               new JProperty("playerHealth", player.health),
-               new JProperty("playerGold", player.gold)
-               );
+            string Invenjson = JsonConvert.SerializeObject(player.inven);
+            string shopJson = JsonConvert.SerializeObject(shop.item);
+
+            JObject Save = new JObject();
+            JArray playerInven = JArray.Parse(Invenjson);
+            JArray shopItem = JArray.Parse(shopJson);
+
+            Save.Add("playerName", player.name);
+            Save.Add("playerJob", player.job);
+            Save.Add("playerLevel", player.level);
+            Save.Add("playerAttack", player.attack);
+            Save.Add("playerDefense", player.defense);
+            Save.Add("playerHealth", player.health);
+            Save.Add("playerGold", player.gold);
+            Save.Add("dungeonLevel", dungeonLevel);
+            Save.Add("playerInven", playerInven);
+            Save.Add("shopItem", shopItem);
 
             File.WriteAllText(filePath, Save.ToString());//Save 폴더 안에 json 파일 만들기
+
 
         }
         static public JObject Read()
@@ -39,21 +49,39 @@ namespace OronaminPC
             string readJson = File.ReadAllText(filePath);//json 파일 불러오기
             JObject jobject = JObject.Parse(readJson);
 
-            // Console.WriteLine(jobject["playerName"]);//저장한 값 잘 나옴
-
             return jobject;
 
 
         }
-        static public void Load(Player player, JObject jobject)
+        public void Load(Player player, JObject jobject, Dungeon dungeon, Shop shop)
         {
+            JToken invenJToken = jobject["playerInven"]; //인벤토리에서
+            JToken shopJToken = jobject["shopItem"]; //인벤토리에서
+                                                     // JToken jToken = jobject["playerInven"];
+            foreach (JToken data in invenJToken)
+            {
+                Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
+                player.inven.Add(item);
+                Console.WriteLine(player.inven.Count());
+            }
+
+            foreach (JToken data in shopJToken)
+            {
+                Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
+                shop.item.Add(item);
+                Console.WriteLine(player.inven.Count());
+            }
+
             player.level = (int)jobject["playerLevel"];
             player.attack = (int)jobject["playerAttack"];
             player.defense = (int)jobject["playerDefense"];
             player.health = (int)jobject["playerHealth"];
             player.gold = (int)jobject["playerGold"];
+            dungeon.dungeonLevel = (int)jobject["dungeonLevel"];
         }
 
     }
+
 }
+
 
