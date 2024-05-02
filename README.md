@@ -1,5 +1,5 @@
 <div align = "center"> 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=header" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=F79797&height=120&section=header" />
 
 <h1>🖥오로나민 PC방</h1>
 <br>
@@ -17,13 +17,14 @@
 <h2>🎮게임 구성 요소</h2>
 
 <h3>
-1️⃣ 게임 타이틀<br><br>
-2️⃣ 직업 선택<br><br>
-3️⃣ 메인 메뉴<br><br>
-4️⃣ 상태 보기<br><br>
-5️⃣ 인벤토리<br><br>
-6️⃣ 상점<br><br>
-7️⃣ 던전<br></h3>
+1️⃣ 게임 타이틀 : 닉네임을 정하기<br><br>
+2️⃣ 직업 선택 : 직업 선택하기<br><br>
+3️⃣ 메인 메뉴 : 원하는 메뉴 고르기<br><br>
+4️⃣ 상태 보기 : 현재 내 상태 확인하기<br><br>
+5️⃣ 인벤토리 : 내 아이템 확인하기<br><br>
+6️⃣ 상점 : 장비 및 소비 아이템 구매하기<br><br>
+7️⃣ 던전 : 격렬하게 전투하기<br><br>
+8️⃣ 휴식 : 지친 심신을 회복하기<br><br></h3>
 <br>
 <br>
 
@@ -61,5 +62,15 @@
 |![dungeon](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/7_dungeon.PNG?raw=true)|![play](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/8_play.PNG?raw=true)|
 |플레이어 네임 작성|플레이어 직업 선택|
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer" />
+|승리|패배|
+|:------:|:------:|
+|![win](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/10_win.PNG?raw=true)|![lose](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/11_lose.PNG?raw=true)|
+|플레이어 네임 작성|플레이어 직업 선택|
+
+|휴식|게임 종료|
+|:------:|:------:|
+|![rest](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/9_rest.PNG?raw=true)|![end](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/12_ending.PNG?raw=true)|
+|플레이어 네임 작성|플레이어 직업 선택|
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=F79797&height=120&section=footer" />
 </div>
