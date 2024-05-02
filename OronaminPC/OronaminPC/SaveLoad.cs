@@ -23,7 +23,7 @@ namespace OronaminPC
         public void Save(Player player, int dungeonLevel, Shop shop)
         {
             string Invenjson = JsonConvert.SerializeObject(player.inven);
-            string shopJson = JsonConvert.SerializeObject(shop.item);
+            string shopJson = JsonConvert.SerializeObject(shop.equipment);
 
             JObject Save = new JObject();
             JArray playerInven = JArray.Parse(Invenjson);
@@ -64,7 +64,7 @@ namespace OronaminPC
             JToken invenJToken = jobject["playerInven"]; //인벤토리에서
             JToken shopJToken = jobject["shopItem"]; //인벤토리에서
             player.inven.Clear();
-            shop.item.Clear();
+            shop.equipment.Clear();
 
             foreach (JToken data in invenJToken)
             {
@@ -76,7 +76,7 @@ namespace OronaminPC
             foreach (JToken data in shopJToken)
             {
                 Item item = JsonConvert.DeserializeObject<Item>(data.ToString());
-                shop.item.Add(item);
+                shop.equipment.Add(item);
             }
 
             player.attackBonus = (int)jobject["playerAttackBouns"];
