@@ -166,14 +166,15 @@ namespace OronaminPC
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"  {name} : 이야~ 방금 받은 물건들이 따끈따끈하구마잉");
                 Console.WriteLine("");
+
                 int equipItemCount = 0;
-
-
+                Item[] test = new Item[inven.Count()];
                 for (int i = 0; i < inven.Count(); i++)
                 {
                     if (inven[i].type.ToString() != "음료수")
                     {
-                        inven[i].PrintItemInventory(inven[i].name, true, i + 1);
+                        inven[i].PrintItemInventory(inven[i].name, true, equipItemCount + 1);
+                        test[equipItemCount] = inven[i];
                         equipItemCount++;
                     }
                 }
@@ -203,7 +204,7 @@ namespace OronaminPC
                 }
                 else
                 {
-                    ItemEquip(inven[number2 - 1]);
+                    ItemEquip(test[number2 - 1]);
                 }
                 Inventory();
             }
