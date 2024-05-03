@@ -536,7 +536,7 @@ public class ConsoleUtility
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"  Lv.{player.level} {player.name} ({player.job})");
         Console.WriteLine($"  HP {player.health}/{pHpStart}");
-        Console.WriteLine($"  MP {player.manaPoint}/50");
+        Console.WriteLine($"  MP {player.manaPoint}");
         Console.ResetColor();
         Console.WriteLine("");
     }
