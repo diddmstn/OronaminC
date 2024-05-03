@@ -6,7 +6,6 @@
 <h2> 📢프로젝트 소개 </h2>
 새로 오픈한 <b>오로나민 PC방</b>에 등장한 당신!<br><br>
 진상이 무엇인지 제대로 보여주는 <b>화끈한 모습</b><br><br>
-막상 게임을 시작하면 스테이지마다 펼쳐지는 암울한 모습<br><br>
 안그래도 열받는 일이 많은데 <b>PC방의 블랙리스트</b>가 되어보자
 <br>
 <br>
@@ -60,7 +59,7 @@
 |던전 입장|전투 장면|
 |:------:|:------:|
 |![dungeon](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/7_dungeon.PNG?raw=true)|![play](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/8_play.PNG?raw=true)|
-|던전 입장하기|화려한 전투씬|
+|던전 입장하기|전투 대기 장면|
 
 |승리|패배|
 |:------:|:------:|
