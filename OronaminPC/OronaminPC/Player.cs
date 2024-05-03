@@ -406,6 +406,7 @@ namespace OronaminPC
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("┖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+            Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
             int number= ConsoleUtility.InputCheck(userInput, 1);
 
