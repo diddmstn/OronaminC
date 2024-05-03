@@ -55,22 +55,22 @@
 |인벤토리|상점|
 |:------:|:------:|
 |![inven](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/5_inven.PNG?raw=true)|![shop](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/6_shop.PNG?raw=true)|
-|플레이어 네임 작성|플레이어 직업 선택|
+|내 아이템 확인|아이템 구매|
 
 |던전 입장|전투 장면|
 |:------:|:------:|
 |![dungeon](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/7_dungeon.PNG?raw=true)|![play](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/8_play.PNG?raw=true)|
-|플레이어 네임 작성|플레이어 직업 선택|
+|던전 입장하기|화려한 전투씬|
 
 |승리|패배|
 |:------:|:------:|
 |![win](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/10_win.PNG?raw=true)|![lose](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/11_lose.PNG?raw=true)|
-|플레이어 네임 작성|플레이어 직업 선택|
+|승리 및 보상|패배 문구 출력|
 
 |휴식|게임 종료|
 |:------:|:------:|
 |![rest](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/9_rest.PNG?raw=true)|![end](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/12_ending.PNG?raw=true)|
-|플레이어 네임 작성|플레이어 직업 선택|
+|휴식 하기|엔딩 장면|
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=F79797&height=120&section=footer" />
 </div>
