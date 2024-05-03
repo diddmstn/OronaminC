@@ -22,8 +22,68 @@ namespace OronaminPC
             monster.Add(new Monster(7, "바론", 25, 300));
 
         }
+
+        public Item UsePotion(ref Player player)
+        {
+            Console.WriteLine("뭐 마실래?\n");
+            int potionCount = ShowPotion(player.inven);
+            string userInput = Console.ReadLine();
+
+            int index = ConsoleUtility.InputCheck(userInput, potionCount) - 1;
+            if (index < 0)
+            {
+                Console.WriteLine("당신은 소중한 기회를 날리셨습니다. 목마름은 책임지지 않아요^^");
+                Item temp = new Item("", Item.Type.음료수, "", 0, 0, 0, 0, 0);
+                return temp;
+            }
+            else
+            {
+                // 먹기
+                Item item = RemovePotion(player.inven, index);
+                player.ItemEquip(item);
+                Console.WriteLine($"  {item.name}을(를) 사용했습니다. 던전에 입장합니다.");
+                Console.WriteLine($"(현재 진행 : {dungeonLevel}층)");
+                Thread.Sleep(1000);
+                return item;
+            }
+        }
+
+        public int ShowPotion(List<Item> inven)
+        {
+            int count = 1;
+            for (int i = 0; i < inven.Count; i++)
+            {
+                if (inven[i].type == Item.Type.음료수)
+                {
+                    Console.Write($"  {count++}. ");
+                    inven[i].PrintItemInventory(inven[i].name, false, i + 1);
+                }
+            }
+            return count - 1;
+        }
+
+        public Item RemovePotion(List<Item> inven, int userInput)
+        {
+            int count = 0;
+            Item temp = new Item("", Item.Type.음료수, "", 0, 0, 0, 0, 0);
+            for (int i = 0; i < inven.Count; i++)
+            {
+                if (inven[i].type == Item.Type.음료수)
+                {
+                    count++;
+                    if (count == userInput + 1)
+                    {
+                        Item item = inven[i];
+                        inven.RemoveAt(i);
+                        return item;
+                    }
+                }
+            }
+            return temp;
+        }
         public void EnterDungeon(ref Player player)
         {
+            Item item = new Item("", Item.Type.음료수, "", 0, 0, 0, 0, 0);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("▨▨▨▨▨▨▨▨▨▨<<오로나민 PC방>>▧▧▧▧▧▧▧▧▧▧");
@@ -65,10 +125,13 @@ namespace OronaminPC
                 case 0:
                     return;
                 case 1:
-                    BattleBoard(ref player);
+                    BattleBoard(ref player, item);
                     break;
                 case 2:
                     // 물약 먹기 함수
+                    item = UsePotion(ref player);
+                    BattleBoard(ref player, item);
+                    break;
                 default:
                     Console.WriteLine("　똑디 말해라 문디 자슥아 (ㅡ∧ㅡ)");
                     Thread.Sleep(1000);
@@ -92,7 +155,7 @@ namespace OronaminPC
 
         }
 
-        public void BattleBoard(ref Player player)
+        public void BattleBoard(ref Player player, Item item)
         {
             int pHpStart = player.health;
             int game = 0; // 1일때 패배 -1일때 승리 -> 필요한가 모르곘네
@@ -225,11 +288,13 @@ namespace OronaminPC
             {
                 cu.Defeat();
                 player.manaPoint += 10;
+                player.ItemEquip(item);
             }
             else if(game == -1) 
             {
                 cu.Victory(ref player, dungeonLevel, getExp);
                 player.manaPoint += 10;
+                player.ItemEquip(item);
                 if (dungeonLevel != 6)
                 {
                     dungeonLevel++;//던전 레벨증가

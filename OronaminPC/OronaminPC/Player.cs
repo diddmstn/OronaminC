@@ -48,8 +48,9 @@ namespace OronaminPC
                 attack = 5;
                 defense = 10;
                 health = 120;
+                manaPoint = 100;
             }
-            gold = 1500;
+            gold = 15000000;
         }
         public void Status()
         {
@@ -331,7 +332,7 @@ namespace OronaminPC
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"  {this.name}의 후원 리액션!!");
                     Console.ResetColor();
-                    damage = this.attack * 2;
+                    damage = this.attack * 3;
                     return damage;
                 default:
                     Console.WriteLine("  직업 설정 에러");
