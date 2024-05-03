@@ -60,7 +60,7 @@
 |던전 입장|전투 장면|
 |:------:|:------:|
 |![dungeon](https://github.com/diddmstn/OronaminC/blob/sangwon/ReadMeImg/7_dungeon.PNG?raw=true)|![play](https://github.com/diddmstn/OronaminC/blob/Dev/ReadMeImg/8_play.PNG?raw=true)|
-|던전 입장하기|화려한 전투씬|
+|던전 입장하기|전투 대기 장면|
 
 |승리|패배|
 |:------:|:------:|
