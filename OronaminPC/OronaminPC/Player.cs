@@ -119,8 +119,8 @@ namespace OronaminPC
 
             for (int i = 0; i < inven.Count(); i++)
             {
-                if (inven[i].type.ToString() != "음료수")
-                inven[i].PrintItemInventory(inven[i].name, false, i + 1);
+                if (inven[i].type != Item.Type.음료수)
+                    inven[i].PrintItemInventory(inven[i].name, false, i + 1);
             }
 
             Console.WriteLine("");
@@ -131,7 +131,7 @@ namespace OronaminPC
 
             for (int i = 0; i < inven.Count(); i++)
             {
-                if (inven[i].type.ToString() == "음료수")
+                if (inven[i].type == Item.Type.음료수)
                 inven[i].PrintItemInventory(inven[i].name, false, i + 1);
             }
 
@@ -171,7 +171,7 @@ namespace OronaminPC
                 Item[] equipInven = new Item[inven.Count()];
                 for (int i = 0; i < inven.Count(); i++)
                 {
-                    if (inven[i].type.ToString() != "음료수")
+                    if (inven[i].type != Item.Type.음료수)
                     {
                         inven[i].PrintItemInventory(inven[i].name, true, equipItemCount + 1);
                         equipInven[equipItemCount] = inven[i];
